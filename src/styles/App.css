@@ -1,3 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
 #root {
   margin: 0 auto;
+}
+:root {
+  --blue: #184f77;
+  --light-blue: #178bad;
+  --dark-blue: #0e2d44;
+  --dark-yellow: #ffda58;
+  --light-yellow: #fffbd9;
+  --purple: rgb(57, 1, 57);
+
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.card > img {
+  width: 60px;
+  border-radius: 100px;
+  margin: 5px;
+  border: 2px solid var(--light-yellow);
+}
+
+.header > img {
+  width: 96px;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 125px 1fr 50px;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  justify-items: center;
+  overflow: auto;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to bottom, var(--dark-blue), var(--purple));
+}
+.header {
+  grid-area: header;
+  align-self: center;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.content {
+  text-align: center;
+  grid-area: content;
+  display: grid;
+}
+.footer {
+  grid-area: footer;
+  font-size: 25px;
+}
+
+.card {
+  display: grid;
+  grid-template-areas:
+    'ranking ign icon'
+    'ranking rank icon';
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 3fr 2fr;
+
+  background:
+    linear-gradient(var(--dark-blue), var(--blue)) padding-box,
+    linear-gradient(45deg, var(--dark-yellow), var(--light-yellow)) border-box;
+  border: 2px solid transparent;
+  border-radius: 20px;
+
+  margin: 10px;
+  align-items: center;
+  justify-items: center;
+}
+.ranking {
+  grid-area: ranking;
+  font-size: 40px;
+  color: var(--light-yellow);
+}
+.icon {
+  grid-area: icon;
+}
+.ign {
+  grid-area: ign;
+  font-weight: bold;
+  font-size: 26px;
+  margin-right: 10px;
+  align-self: flex-end;
+}
+.rank {
+  grid-area: rank;
+  align-self: flex-start;
+}
+
+.unranked {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+h1 {
+  padding: 10px;
+  background: linear-gradient(
+    to right,
+    var(--dark-yellow),
+    var(--light-yellow)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  color: white;
+}
+
+h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  color: white;
+  text-align: end;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-blue);
+  font-weight: bold;
+}
+
+.cardcontainer {
+  justify-self: center;
+}
+
+/* for loading spinner */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid black;
+  border-bottom-color: var(--dark-yellow);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 0.5s linear infinite;
+  margin: 20px;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
