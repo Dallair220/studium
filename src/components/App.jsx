@@ -12,7 +12,7 @@ function App() {
     setSummonerNames([...summonerNames, bundledSummonerInfo]);
   };
 
-  console.log(summonerNames);
+  console.log('current state at App()', summonerNames);
 
   return (
     <div className="container">

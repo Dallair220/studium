@@ -1,20 +1,29 @@
 export default function CardList({ summonerNames }) {
+  console.log('cardlist gets this:', summonerNames);
   return (
     <div className="cardContainer">
       {summonerNames.map((entry, index) => {
-        return <Card key={entry} name={entry} ranking={index + 1} />;
+        return (
+          <Card
+            key={entry.name}
+            name={entry.name}
+            ranking={index + 1}
+            profileIconId={entry.profileIconId}
+            soloRank={entry.soloRank}
+          />
+        );
       })}
     </div>
   );
 }
 
-function Card({ ranking, name, rank, icon }) {
+function Card({ ranking, name, soloRank, profileIconId }) {
   return (
     <div className="card">
       <div className="ranking">{ranking}</div>
       <div className="summonerName">{name}</div>
-      <div className="rank">rr</div>
-      <div className="icon">i</div>
+      <div className="rank">{`${soloRank.tier} ${soloRank.rank} `}</div>
+      <div className="icon">{'#' + profileIconId}</div>
     </div>
   );
 }

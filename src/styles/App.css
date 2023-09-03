@@ -91,6 +91,7 @@ a:hover {
 }
 .icon {
   grid-area: icon;
+  color: #fffbd9;
 }
 .summonerName {
   grid-area: ign;
