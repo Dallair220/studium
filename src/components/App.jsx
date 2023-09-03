@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/App.css';
-import Adding from './Adding';
+import Enter from './Enter';
 import CardList from './CardList';
 import bundleInfoBySummonerName from './utils/bundle';
 
@@ -20,7 +20,7 @@ function App() {
         <h1>League Ladder</h1>
       </div>
       <div className="content">
-        <Adding onSubmit={handleInputChange} />
+        <Enter onSubmit={handleInputChange} />
         <CardList summonerNames={summonerNames} />
       </div>
       <div className="footer"></div>

@@ -10,7 +10,7 @@ export async function getInfoBySummonerName(summonerName) {
     const summonerData = await response.json();
     return summonerData;
   } catch (error) {
-    console.log('Error!');
+    console.log('Error: Summoner not available.');
     return error;
   }
 }
