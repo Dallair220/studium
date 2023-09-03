@@ -59,7 +59,7 @@ a:hover {
 .content {
   text-align: center;
   grid-area: content;
-  display: grid;
+  /* display: grid; */
 }
 .footer {
   grid-area: footer;
@@ -75,12 +75,12 @@ a:hover {
   grid-template-rows: 3fr 2fr;
 
   background:
-    linear-gradient(var(--dark-blue), var(--blue)) padding-box,
+    linear-gradient(var(--dark-blue), var(--dark-blue)) padding-box,
     linear-gradient(45deg, var(--dark-yellow), var(--light-yellow)) border-box;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 20px;
 
-  margin: 10px;
+  margin: 10px 0px;
   align-items: center;
   justify-items: center;
 }
@@ -92,16 +92,18 @@ a:hover {
 .icon {
   grid-area: icon;
 }
-.ign {
+.summonerName {
   grid-area: ign;
   font-weight: bold;
   font-size: 26px;
   margin-right: 10px;
   align-self: flex-end;
+  color: var(--light-yellow);
 }
 .rank {
   grid-area: rank;
   align-self: flex-start;
+  color: var(--light-yellow);
 }
 
 .unranked {
@@ -136,10 +138,6 @@ a {
   text-decoration: none;
   color: var(--light-blue);
   font-weight: bold;
-}
-
-.cardcontainer {
-  justify-self: center;
 }
 
 /* for loading spinner */

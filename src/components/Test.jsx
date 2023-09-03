@@ -1,7 +1,7 @@
 import testCall from './utils/script';
 
 export default function Test() {
-  testCall();
+  //testCall();
 
   return <h2>kinda worked?</h2>;
 }
