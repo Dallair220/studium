@@ -2,13 +2,14 @@ import { useState } from 'react';
 import '../styles/App.css';
 import Adding from './Adding';
 import CardList from './CardList';
-import Test from './Test';
+import bundleInfoBySummonerName from './utils/bundle';
 
 function App() {
   const [summonerNames, setSummonerNames] = useState([]);
 
-  const handleInputChange = (input) => {
-    setSummonerNames([...summonerNames, input]);
+  const handleInputChange = async (input) => {
+    const bundledSummonerInfo = await bundleInfoBySummonerName(input);
+    setSummonerNames([...summonerNames, bundledSummonerInfo]);
   };
 
   console.log(summonerNames);
@@ -21,7 +22,6 @@ function App() {
       <div className="content">
         <Adding onSubmit={handleInputChange} />
         <CardList summonerNames={summonerNames} />
-        {/* <Test /> */}
       </div>
       <div className="footer"></div>
     </div>

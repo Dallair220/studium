@@ -2,7 +2,7 @@ export default function CardList({ summonerNames }) {
   return (
     <div className="cardContainer">
       {summonerNames.map((entry, index) => {
-        return <Card name={entry} ranking={index + 1} />;
+        return <Card key={entry} name={entry} ranking={index + 1} />;
       })}
     </div>
   );
