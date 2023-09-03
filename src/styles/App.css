@@ -120,6 +120,7 @@ h1 {
     var(--light-yellow)
   );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
