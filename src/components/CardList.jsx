@@ -1,5 +1,4 @@
 export default function CardList({ summonerNames }) {
-  console.log('cardlist gets this:', summonerNames);
   return (
     <div className="cardContainer">
       {summonerNames.map((entry, index) => {
