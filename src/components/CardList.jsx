@@ -23,7 +23,10 @@ function Card({ ranking, name, soloRank, profileIconId }) {
       <div className="ranking">{ranking}</div>
       <div className="summonerName">{name}</div>
       <div className="rank">{`${soloRank.tier} ${soloRank.rank} `}</div>
-      <div className="icon">{'#' + profileIconId}</div>
+      <img
+        className="icon"
+        src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${profileIconId}.webp`}
+      />
     </div>
   );
 }
