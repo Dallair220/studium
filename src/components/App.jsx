@@ -12,6 +12,8 @@ function App() {
     setSummonerNames([...summonerNames, bundledSummonerInfo]);
   };
 
+  console.log('summonerNames wird an CardList übergeben:', summonerNames);
+
   return (
     <div className="container">
       <div className="header">
