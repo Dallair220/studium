@@ -1,4 +1,4 @@
 // key expires within 24 hours
 export default function getRiotDevAPIKey() {
-  return 'RGAPI-a79e2524-ac79-499e-a757-8d9912524fbc';
+  return 'RGAPI-af01bc67-738a-48a4-af88-e58496739147';
 }

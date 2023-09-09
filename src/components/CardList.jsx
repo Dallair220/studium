@@ -24,7 +24,8 @@ function Card({ ranking, name, soloRank, profileIconId }) {
       <div className="rank">{`${soloRank.tier} ${soloRank.rank} `}</div>
       <img
         className="icon"
-        src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${profileIconId}.webp`}
+        // src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${profileIconId}.webp`}
+        src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${profileIconId}.png`}
       />
     </div>
   );
