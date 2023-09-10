@@ -3,16 +3,17 @@ import '../styles/App.css';
 import Enter from './Enter';
 import CardList from './CardList';
 import bundleInfoBySummonerName from './utils/bundle';
+import sortLadder from './utils/sortLadder';
 
 function App() {
   const [summonerNames, setSummonerNames] = useState([]);
 
   const handleInputChange = async (input) => {
     const bundledSummonerInfo = await bundleInfoBySummonerName(input);
-    setSummonerNames([...summonerNames, bundledSummonerInfo]);
+    // Sortierung nach Rang
+    const sortedList = sortLadder([...summonerNames, bundledSummonerInfo]);
+    setSummonerNames(sortedList);
   };
-
-  console.log('summonerNames wird an CardList übergeben:', summonerNames);
 
   return (
     <div className="container">

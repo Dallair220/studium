@@ -2,13 +2,11 @@ import { getInfoBySummonerName, getRankedInfoBySummonerId } from './api';
 
 export default async function bundleInfoBySummonerName(summonerName) {
   const summonerData = await getInfoBySummonerName(summonerName);
-  console.log('summonerData', summonerData);
   const name = summonerData.name;
   const profileIconId = summonerData.profileIconId;
 
   const rankedData = await getRankedInfoBySummonerId(summonerData.id);
   const soloRank = findSoloRank(rankedData);
-  console.log('rankedData:', rankedData);
 
   return { name, profileIconId, soloRank };
 }
@@ -21,7 +19,7 @@ function findSoloRank(rankedData) {
   );
 
   if (result === undefined) {
-    tier = 'Unranked';
+    tier = 'UNRANKED';
   } else {
     tier = result.tier;
     rank = result.rank;
