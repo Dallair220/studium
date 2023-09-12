@@ -12,7 +12,8 @@ function App() {
     const data = localStorage.getItem('summonerNames');
     // Endlosschleife verhindern
     if (data !== JSON.stringify(summonerNames)) {
-      setSummonerNames(JSON.parse(data));
+      const parsedData = JSON.parse(data);
+      parsedData === null ? setSummonerNames([]) : setSummonerNames(parsedData);
     }
   }, []);
 
