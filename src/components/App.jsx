@@ -21,6 +21,13 @@ function App() {
   }, [summonerNames]);
 
   const handleInputChange = async (input) => {
+    const summonerNameVorhanden = summonerNames.find(
+      (element) => element.name.toLowerCase() === input.toLowerCase(),
+    );
+    if (summonerNameVorhanden) {
+      alert('Summoner name is already in the list.');
+      return;
+    }
     const bundledSummonerInfo = await bundleInfoBySummonerName(input);
     // Sortierung nach Rang
     const sortedList = sortLadder([...summonerNames, bundledSummonerInfo]);
