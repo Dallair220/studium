@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/Enter.css';
 
-export default function Enter({ onSubmit }) {
+export default function Enter({ onSubmit, handleRefresh }) {
   const [input, setInput] = useState('');
 
   const handleInputChange = (e) => {
@@ -17,7 +17,9 @@ export default function Enter({ onSubmit }) {
   return (
     <div className="enter">
       <form onSubmit={handleSubmit}>
-        <button className="add refresh">Refresh</button>
+        <button type="button" onClick={handleRefresh} className="add refresh">
+          Refresh
+        </button>
         <input
           value={input}
           onChange={handleInputChange}

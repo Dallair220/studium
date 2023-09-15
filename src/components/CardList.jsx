@@ -69,7 +69,7 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
             className="deleteImg icon"
             draggable="false"
             onClick={handleClick}
-            src={'../../src/assets/minus.png'}
+            src={'src/assets/minus.png'}
           />
         </>
       ) : (
