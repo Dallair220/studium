@@ -69,7 +69,7 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
             className="deleteImg icon"
             draggable="false"
             onClick={handleClick}
-            src={'src/assets/minus.png'}
+            src={'https://cdn-icons-png.flaticon.com/512/1828/1828666.png'}
           />
         </>
       ) : (
