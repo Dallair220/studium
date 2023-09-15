@@ -1,7 +1,7 @@
 import '../styles/CardList.css';
 import { useState } from 'react';
 
-export default function CardList({ summonerNames }) {
+export default function CardList({ summonerNames, removeHandler }) {
   return (
     <div className="cardContainer">
       {summonerNames.map((entry, index) => {
@@ -12,6 +12,7 @@ export default function CardList({ summonerNames }) {
             ranking={index + 1}
             profileIconId={entry.profileIconId}
             soloRank={entry.soloRank}
+            removeHandler={removeHandler}
           />
         );
       })}
@@ -19,7 +20,7 @@ export default function CardList({ summonerNames }) {
   );
 }
 
-function Card({ ranking, name, soloRank, profileIconId }) {
+function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -28,10 +29,6 @@ function Card({ ranking, name, soloRank, profileIconId }) {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  };
-
-  const handleClick = () => {
-    console.log('DELETE!');
   };
 
   return (
@@ -43,6 +40,23 @@ function Card({ ranking, name, soloRank, profileIconId }) {
       <div className="ranking">{ranking}</div>
       <div className="summonerName">{name}</div>
       <div className="rank">{`${soloRank.tier} ${soloRank.rank} `}</div>
+      <Icon
+        isHovered={isHovered}
+        iconId={profileIconId}
+        removeHandler={removeHandler}
+        summonerName={name}
+      />
+    </div>
+  );
+}
+
+function Icon({ isHovered, iconId, removeHandler, summonerName }) {
+  const handleClick = () => {
+    removeHandler(summonerName);
+  };
+
+  return (
+    <>
       {/* Conditional rendering */}
       {isHovered ? (
         <img
@@ -53,10 +67,10 @@ function Card({ ranking, name, soloRank, profileIconId }) {
       ) : (
         <img
           className="icon"
-          // src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${profileIconId}.webp`}
-          src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${profileIconId}.png`}
+          // src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${iconId}.webp`}
+          src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
         />
       )}
-    </div>
+    </>
   );
 }

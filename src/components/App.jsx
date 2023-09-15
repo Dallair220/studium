@@ -21,12 +21,11 @@ function App() {
     localStorage.setItem('summonerNames', JSON.stringify(summonerNames));
   }, [summonerNames]);
 
-  // Eventhandler für neuer SN hinzugefügt
-  const handleInputChange = async (input) => {
+  const addSummonerToLadder = async (input) => {
     // Duplikate verhindern
-    const summonerNameVorhanden = summonerNames.find(
-      (element) => element.name.toLowerCase() === input.toLowerCase(),
-    );
+    const summonerNameVorhanden = summonerNames.find((element) => {
+      return element.name.toLowerCase() === input.toLowerCase();
+    });
     if (summonerNameVorhanden) {
       alert('Summoner name is already in the list.');
       return;
@@ -38,14 +37,24 @@ function App() {
     setSummonerNames(sortedList);
   };
 
+  const removeSummonerFromLadder = (summoner) => {
+    const filteredLadder = summonerNames.filter((element) => {
+      return element.name !== summoner;
+    });
+    setSummonerNames(filteredLadder);
+  };
+
   return (
     <div className="container">
       <div className="header">
         <h1>League Ladder</h1>
       </div>
       <div className="content">
-        <Enter onSubmit={handleInputChange} />
-        <CardList summonerNames={summonerNames} />
+        <Enter onSubmit={addSummonerToLadder} />
+        <CardList
+          summonerNames={summonerNames}
+          removeHandler={removeSummonerFromLadder}
+        />
       </div>
       <div className="footer"></div>
     </div>
