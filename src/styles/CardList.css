@@ -1,0 +1,18 @@
+.card:hover .icon {
+  opacity: 0.5;
+}
+
+.card .icon:hover {
+  opacity: 1;
+
+  width: 60px;
+  border-radius: 100px;
+  margin: 5px;
+  background-color: var(--light-yellow);
+}
+
+.card .icon:active {
+  border: 2px solid var(--dark-yellow);
+  position: relative;
+  top: 1px;
+}

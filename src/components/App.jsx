@@ -21,7 +21,9 @@ function App() {
     localStorage.setItem('summonerNames', JSON.stringify(summonerNames));
   }, [summonerNames]);
 
+  // Eventhandler für neuer SN hinzugefügt
   const handleInputChange = async (input) => {
+    // Duplikate verhindern
     const summonerNameVorhanden = summonerNames.find(
       (element) => element.name.toLowerCase() === input.toLowerCase(),
     );
@@ -29,6 +31,7 @@ function App() {
       alert('Summoner name is already in the list.');
       return;
     }
+    // API calls, um anhand des Summoner Namens den Rang und weitere Infos zu bekommen
     const bundledSummonerInfo = await bundleInfoBySummonerName(input);
     // Sortierung nach Rang
     const sortedList = sortLadder([...summonerNames, bundledSummonerInfo]);
