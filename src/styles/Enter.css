@@ -8,6 +8,7 @@
 
 input {
   background-color: #ffdc5d;
+  color: #0e2d44;
   border-radius: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -15,6 +16,7 @@ input {
   padding-left: 10px;
   font-size: 20px;
   margin: 5px;
+  border: 1px solid #0e2d44;
 }
 
 .add {

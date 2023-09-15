@@ -20,6 +20,7 @@ export async function getInfoBySummonerName(summonerName) {
 // https://developer.riotgames.com/apis#league-v4/GET_getLeagueEntriesForSummoner
 export async function getRankedInfoBySummonerId(summonerId) {
   try {
+    console.log('fetching ranked data...');
     const response = await fetch(
       `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${getRiotDevAPIKey()}`,
     );

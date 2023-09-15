@@ -1,18 +1,27 @@
-.card:hover .icon {
+/* hover over card  */
+.card:hover .deleteImg {
   opacity: 0.5;
 }
 
-.card .icon:hover {
+/* hover over icon */
+.icon:hover:not(.card:hover) {
   opacity: 1;
+  cursor: pointer;
+}
 
-  width: 60px;
-  border-radius: 100px;
-  margin: 5px;
+/* click on icon */
+.icon:active {
   background-color: var(--light-yellow);
 }
 
-.card .icon:active {
-  border: 2px solid var(--dark-yellow);
-  position: relative;
-  top: 1px;
+.card {
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

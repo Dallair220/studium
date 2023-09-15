@@ -59,11 +59,19 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
     <>
       {/* Conditional rendering */}
       {isHovered ? (
-        <img
-          className="icon deleteImg"
-          onClick={handleClick}
-          src={'../../src/assets/minus.png'}
-        />
+        <>
+          <img
+            className="icon"
+            // src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${iconId}.webp`}
+            src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
+          />
+          <img
+            className="deleteImg icon"
+            draggable="false"
+            onClick={handleClick}
+            src={'../../src/assets/minus.png'}
+          />
+        </>
       ) : (
         <img
           className="icon"
