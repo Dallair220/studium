@@ -8,6 +8,7 @@ import sortLadder from './utils/sortLadder';
 function App() {
   const [summonerNames, setSummonerNames] = useState([]);
   const [saveLadder, setSaveLadder] = useState([]);
+  let summonerNamesTmp = [];
 
   useEffect(() => {
     const data = localStorage.getItem('summonerNames');
@@ -22,15 +23,19 @@ function App() {
     localStorage.setItem('summonerNames', JSON.stringify(summonerNames));
   }, [summonerNames]);
 
-  const addSummonerToLadder = async (input) => {
+  const addSummonerToLadder = async (name) => {
+    //remove white spaces
+    const input = name.replace(/ /g, '');
+
     if (summonerNames.length > 9) {
       alert('Ladder limit is at 10');
       return;
     }
     // Duplikate verhindern
     const summonerNameVorhanden = summonerNames.find((element) => {
-      console.log('input', input);
-      return element.name.toLowerCase() === input.toLowerCase();
+      return (
+        element.name.toLowerCase().replace(/ /g, '') === input.toLowerCase()
+      );
     });
     if (summonerNameVorhanden) {
       alert('Summoner name is already in the list.');
@@ -39,8 +44,10 @@ function App() {
     // API calls, um anhand des Summoner Namens den Rang und weitere Infos zu bekommen
     const bundledSummonerInfo = await bundleInfoBySummonerName(input);
     // Sortierung nach Rang
+
     const sortedList = sortLadder([...summonerNames, bundledSummonerInfo]);
     console.log('before setting...', input);
+    console.log('sortedList', sortedList);
     setSummonerNames(sortedList);
   };
 
@@ -52,23 +59,26 @@ function App() {
   };
 
   const handleRefresh = () => {
-    setSummonerNames([]);
     setSaveLadder(summonerNames);
+    setSummonerNames([]);
   };
 
   useEffect(() => {
     refresher();
-
-    return () => {
-      console.log('cleanup');
-    };
+    summonerNamesTmp = [];
   }, [saveLadder]);
 
   const refresher = async () => {
-    for await (const summoner of saveLadder) {
-      console.log(summoner);
-      await addSummonerToLadder(summoner.name);
+    for (const summoner of saveLadder) {
+      await addSummonerToLadderAfterRefresh(summoner.name);
     }
+  };
+
+  const addSummonerToLadderAfterRefresh = async (name) => {
+    const bundledSummonerInfo = await bundleInfoBySummonerName(name);
+    summonerNamesTmp = [...summonerNamesTmp, bundledSummonerInfo];
+    const sortedList = sortLadder(summonerNamesTmp);
+    setSummonerNames(sortedList);
   };
 
   return (
