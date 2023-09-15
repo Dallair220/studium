@@ -22,6 +22,10 @@ function App() {
   }, [summonerNames]);
 
   const addSummonerToLadder = async (input) => {
+    if (summonerNames.length > 9) {
+      alert('Ladder limit is at 10');
+      return;
+    }
     // Duplikate verhindern
     const summonerNameVorhanden = summonerNames.find((element) => {
       return element.name.toLowerCase() === input.toLowerCase();
