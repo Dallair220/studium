@@ -19,7 +19,7 @@ const RANK_VALUE = {
 };
 
 export default function sortLadder(ladderList) {
-  const sortedList = ladderList.sort((playerA, playerB) => {
+  ladderList.sort((playerA, playerB) => {
     // compare tier rank first
     if (TIER_VALUE[playerA.soloRank.tier] > TIER_VALUE[playerB.soloRank.tier])
       return -1;
