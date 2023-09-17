@@ -11,7 +11,6 @@ export async function getInfoBySummonerName(summonerName) {
     return summonerData;
   } catch (error) {
     alert('Summoner name is not available.');
-    console.log('Error: Summoner not available.');
     return error;
   }
 }
