@@ -7,6 +7,9 @@
 .summonerName:hover ~ .deleteImg {
   opacity: 0;
 }
+.summonerName:hover ~ .icon {
+  border: #ffda58 2px solid;
+}
 
 /* hover over icon */
 .icon:hover:not(.card:hover) {

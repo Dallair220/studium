@@ -74,7 +74,7 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
       {isHovered ? (
         <>
           <img
-            className="icon helper"
+            className="icon"
             src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
           />
           <img
