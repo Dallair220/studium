@@ -45,7 +45,13 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="ranking">{ranking}</div>
-      <div className="summonerName">{name}</div>
+      <a
+        href={`https://www.leagueofgraphs.com/summoner/euw/${name}`}
+        target="_blank"
+        className="summonerName"
+      >
+        {name}
+      </a>
       <div className="rank">{rankDisplay}</div>
       <Icon
         isHovered={isHovered}
