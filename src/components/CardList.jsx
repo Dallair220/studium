@@ -23,6 +23,13 @@ export default function CardList({ summonerNames, removeHandler }) {
 function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const rankName =
+    soloRank.tier[0].toUpperCase() + soloRank.tier.slice(1).toLowerCase();
+  let rankDisplay = `${rankName} ${soloRank.rank} (${soloRank.leaguePoints} LP)`;
+  if (rankName === 'Unranked') {
+    rankDisplay = 'Unranked';
+  }
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -39,7 +46,7 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
     >
       <div className="ranking">{ranking}</div>
       <div className="summonerName">{name}</div>
-      <div className="rank">{`${soloRank.tier} ${soloRank.rank} `}</div>
+      <div className="rank">{rankDisplay}</div>
       <Icon
         isHovered={isHovered}
         iconId={profileIconId}
@@ -62,7 +69,6 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
         <>
           <img
             className="icon"
-            // src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${iconId}.webp`}
             src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
           />
           <img
@@ -75,7 +81,6 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
       ) : (
         <img
           className="icon"
-          // src={`https://ddragon-webp.lolmath.net/latest/img/profileicon/${iconId}.webp`}
           src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
         />
       )}
