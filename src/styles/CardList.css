@@ -3,6 +3,11 @@
   opacity: 0.5;
 }
 
+/* hover over summoner */
+.summonerName:hover ~ .deleteImg {
+  opacity: 0;
+}
+
 /* hover over icon */
 .icon:hover:not(.card:hover) {
   opacity: 1;
