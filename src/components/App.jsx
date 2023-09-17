@@ -24,13 +24,15 @@ function App() {
   }, [summonerNames]);
 
   const addSummonerToLadder = async (name) => {
-    //remove white spaces
+    // Leerzeichen entfernen
     const input = name.replace(/ /g, '');
 
+    // Limit: 10 Einträge
     if (summonerNames.length > 9) {
       alert('Ladder limit is at 10');
       return;
     }
+
     // Duplikate verhindern
     const summonerNameVorhanden = summonerNames.find((element) => {
       return (
@@ -41,10 +43,11 @@ function App() {
       alert('Summoner name is already in the list.');
       return;
     }
+
     // API calls, um anhand des Summoner Namens den Rang und weitere Infos zu bekommen
     const bundledSummonerInfo = await bundleInfoBySummonerName(input);
-    // Sortierung nach Rang
 
+    // Sortierung nach Rang
     const sortedList = sortLadder([...summonerNames, bundledSummonerInfo]);
     console.log('before setting...', input);
     console.log('sortedList', sortedList);
