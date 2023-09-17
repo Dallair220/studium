@@ -49,8 +49,6 @@ function App() {
 
     // Sortierung nach Rang
     const sortedList = sortLadder([...summonerNames, bundledSummonerInfo]);
-    console.log('before setting...', input);
-    console.log('sortedList', sortedList);
     setSummonerNames(sortedList);
   };
 
