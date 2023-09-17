@@ -10,7 +10,8 @@ export async function getInfoBySummonerName(summonerName) {
     const summonerData = await response.json();
     return summonerData;
   } catch (error) {
-    alert('Summoner name is not available.');
+    // Fehler: Spieler nicht vorhanden.
+    alert('Summoner is not existing. (or API error)');
     return error;
   }
 }
