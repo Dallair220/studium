@@ -1,6 +1,6 @@
 # Praxisprojekt
 
-Project for League Ladder
+League Ladder Projekt (for TH Köln)
 
 # React + Vite
 
