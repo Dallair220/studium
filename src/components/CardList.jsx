@@ -46,7 +46,7 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
     >
       <div className="ranking">{ranking}</div>
       <a
-        href={`https://www.leagueofgraphs.com/summoner/euw/${name}`}
+        href={`https://u.gg/lol/profile/euw1/${name}`}
         target="_blank"
         className="summonerName"
       >
