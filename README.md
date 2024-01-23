@@ -1,6 +1,6 @@
-# wi-projekt
+# Praxisprojekt
 
-Project for League Ladder, including presentations
+Project for League Ladder
 
 # React + Vite
 
