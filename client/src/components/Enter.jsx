@@ -24,7 +24,7 @@ export default function Enter({ onSubmit, handleRefresh }) {
           value={input}
           onChange={handleInputChange}
           type="text"
-          placeholder="Enter: Summoner Name"
+          placeholder="Enter: Riot ID"
         />
         <button type="submit" className="add">
           Add
