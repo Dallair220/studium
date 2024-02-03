@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run client:build && node ./bin/www",
-    "client:build": "cd client && npm run build && cd ..",
+    "client:build": "cd client && npm install && npm run build && cd ..",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=studium:* npm run devstart"
   },
