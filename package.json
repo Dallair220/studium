@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "npm run client:build && node ./bin/www",
+    "client:build": "cd client && npm run build && cd ..",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=studium:* npm run devstart"
   },
