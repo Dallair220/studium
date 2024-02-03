@@ -18,7 +18,7 @@ export default function Enter({ onSubmit, handleRefresh }) {
     <div className="enter">
       <form onSubmit={handleSubmit}>
         <button type="button" onClick={handleRefresh} className="add refresh">
-          Reefresh
+          Refresh
         </button>
         <input
           value={input}
