@@ -4,6 +4,7 @@ const RankSchema = new mongoose.Schema({
   rank: {
     type: String,
     required: true,
+    default: 'UNRANKED',
     enum: [
       'UNRANKED',
       'IRON',
@@ -17,7 +18,6 @@ const RankSchema = new mongoose.Schema({
       'GRANDMASTER',
       'CHALLENGER',
     ],
-    default: 'UNRANKED',
   }, // soloRank.tier
   division: { type: String, required: true, enum: ['I', 'II', 'III', 'IV'] }, // soloRank.rank
   leaguePoints: { type: Number, required: true },
