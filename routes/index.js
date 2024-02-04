@@ -8,4 +8,9 @@ router.get('/', function (req, res, next) {
   res.render('index');
 });
 
+router.post('/add-account', function (req, res, next) {
+  console.log('received request', req.body.riotId);
+  res.redirect('/');
+});
+
 module.exports = router;

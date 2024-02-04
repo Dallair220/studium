@@ -28,8 +28,8 @@ function App() {
     const input = name.replace(/ /g, '');
 
     // Limit: 10 Einträge
-    if (summonerNames.length > 9) {
-      alert('Ladder limit is at 10');
+    if (summonerNames.length > 14) {
+      alert('Ladder limit is at 15');
       return;
     }
 

@@ -16,7 +16,9 @@ export default function Enter({ onSubmit, handleRefresh }) {
 
   return (
     <div className="enter">
-      <form onSubmit={handleSubmit}>
+      <form
+        /*</div>method="POST" action="/add-account"*/ onSubmit={handleSubmit}
+      >
         <button type="button" onClick={handleRefresh} className="add refresh">
           Refresh
         </button>
@@ -24,6 +26,7 @@ export default function Enter({ onSubmit, handleRefresh }) {
           value={input}
           onChange={handleInputChange}
           type="text"
+          name="riotId"
           placeholder="Enter: Riot ID"
         />
         <button type="submit" className="add">
