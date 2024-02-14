@@ -1,17 +1,31 @@
 import '../styles/CardList.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function CardList({ summonerNames, removeHandler }) {
+export default function CardList({ removeHandler }) {
+  const [summonerNames, setSummonerNames] = useState([]);
+
+  const fetchData = async () => {
+    const response = await fetch('/players', { method: 'GET' });
+    const data = await response.json();
+    console.log('data: ', data);
+    setSummonerNames(data.sortedPlayers);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="cardContainer">
-      {summonerNames.map((entry, index) => {
+      {console.log('summonerNames: ', summonerNames)}
+      {summonerNames?.map((entry, index) => {
         return (
           <Card
-            key={entry.name}
-            name={entry.name}
+            ok={console.log(entry)}
+            key={entry._id}
+            name={entry.gameName}
             ranking={index + 1}
             profileIconId={entry.profileIconId}
-            soloRank={entry.soloRank}
+            soloRank={entry.rank}
             removeHandler={removeHandler}
           />
         );
@@ -24,8 +38,8 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const rankName =
-    soloRank.tier[0].toUpperCase() + soloRank.tier.slice(1).toLowerCase();
-  let rankDisplay = `${rankName} ${soloRank.rank} (${soloRank.leaguePoints} LP)`;
+    soloRank.rank[0].toUpperCase() + soloRank.rank.slice(1).toLowerCase();
+  let rankDisplay = `${rankName} ${soloRank.division} (${soloRank.leaguePoints} LP)`;
   if (rankName === 'Unranked') {
     rankDisplay = 'Unranked';
   }

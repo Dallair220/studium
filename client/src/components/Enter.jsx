@@ -1,28 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../styles/Enter.css';
 
-export default function Enter({ addSummonerToLadder, handleRefresh }) {
+export default function Enter({ handleRefresh }) {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addSummonerToLadder(input);
+    // addSummonerToLadder(input);
+    console.log('addSummonerToLadder: ', input);
     setInput('');
   };
-
-  const fetchData = async () => {
-    const response = await fetch('/players', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    console.log(data); // Log the response data to the console
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div className="enter">

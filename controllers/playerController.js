@@ -1,13 +1,14 @@
-const Player = require('../models/player');
-const Rank = require('../models/rank');
-
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
+const sortLadder = require('../utils/rankSortingUtils');
+const Player = require('../models/player');
+const Rank = require('../models/rank');
 
 // Return list of all Players.
 exports.player_list_get = asyncHandler(async (req, res, next) => {
   const allPlayers = await Player.find({}).populate('rank');
-  res.json({ status: 'success', allPlayers });
+  const sortedPlayers = sortLadder(allPlayers);
+  res.json({ status: 'success', sortedPlayers });
 });
 
 // Handle Player create on POST.
