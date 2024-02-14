@@ -30,19 +30,11 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
     rankDisplay = 'Unranked';
   }
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
   return (
     <div
       className="card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="ranking">{ranking}</div>
       <a
@@ -64,13 +56,8 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
 }
 
 function Icon({ isHovered, iconId, removeHandler, summonerName }) {
-  const handleClick = () => {
-    removeHandler(summonerName);
-  };
-
   return (
     <>
-      {/* Conditional rendering */}
       {isHovered ? (
         <>
           <img
@@ -80,7 +67,7 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
           <img
             className="deleteImg icon"
             draggable="false"
-            onClick={handleClick}
+            onClick={() => removeHandler(summonerName)}
             src={'https://cdn-icons-png.flaticon.com/512/1828/1828665.png'}
           />
         </>

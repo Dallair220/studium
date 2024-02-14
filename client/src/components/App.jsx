@@ -27,8 +27,8 @@ function App() {
     // Leerzeichen entfernen
     const input = name.replace(/ /g, '');
 
-    // Limit: 10 Einträge
-    if (summonerNames.length > 14) {
+    // Limit: 15 Einträge
+    if (summonerNames.length >= 15) {
       alert('Ladder limit is at 15');
       return;
     }
@@ -88,7 +88,10 @@ function App() {
         <h1>League Ladder</h1>
       </div>
       <div className="content">
-        <Enter onSubmit={addSummonerToLadder} handleRefresh={handleRefresh} />
+        <Enter
+          addSummonerToLadder={addSummonerToLadder}
+          handleRefresh={handleRefresh}
+        />
         <CardList
           summonerNames={summonerNames}
           removeHandler={removeSummonerFromLadder}

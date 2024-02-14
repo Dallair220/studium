@@ -1,20 +1,16 @@
 import { useEffect, useState } from 'react';
 import '../styles/Enter.css';
 
-export default function Enter({ onSubmit, handleRefresh }) {
+export default function Enter({ addSummonerToLadder, handleRefresh }) {
   const [input, setInput] = useState('');
-
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(input);
+    addSummonerToLadder(input);
     setInput('');
   };
 
-  useEffect(async () => {
+  const fetchData = async () => {
     const response = await fetch('/players', {
       method: 'GET',
       headers: {
@@ -23,6 +19,9 @@ export default function Enter({ onSubmit, handleRefresh }) {
     });
     const data = await response.json();
     console.log(data); // Log the response data to the console
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
@@ -33,7 +32,7 @@ export default function Enter({ onSubmit, handleRefresh }) {
         </button>
         <input
           value={input}
-          onChange={handleInputChange}
+          onChange={(e) => setInput(e.target.value)}
           type="text"
           name="riotId"
           placeholder="Enter: Riot ID"
