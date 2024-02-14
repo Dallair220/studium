@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/Enter.css';
 
 export default function Enter({ onSubmit, handleRefresh }) {
@@ -14,11 +14,20 @@ export default function Enter({ onSubmit, handleRefresh }) {
     setInput('');
   };
 
+  useEffect(async () => {
+    const response = await fetch('/players', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data); // Log the response data to the console
+  }, []);
+
   return (
     <div className="enter">
-      <form
-        /*</div>method="POST" action="/add-account"*/ onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <button type="button" onClick={handleRefresh} className="add refresh">
           Refresh
         </button>

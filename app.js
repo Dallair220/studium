@@ -9,7 +9,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
-console.log('server started');
 
 // MongoDB connection
 mongoose.set('strictQuery', false);

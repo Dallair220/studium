@@ -1,16 +1,17 @@
 const express = require('express');
-const path = require('path');
 const router = express.Router();
+const player_controller = require('../controllers/playerController');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  // res.sendFile(path.join(__dirname + 'client/dist/index.html'));
-  res.render('index');
-});
+// GET list of all Players.
+router.get('/players', player_controller.player_list_get);
 
-router.post('/add-account', function (req, res, next) {
-  console.log('received request', req.body.riotId);
-  res.redirect('/');
-});
+// POST request for creating Player.
+router.post('/player/create', player_controller.player_create_post);
+
+// POST request to delete Player.
+router.post('/player/:id/delete', player_controller.player_delete_post);
+
+// POST request to update Player.
+router.post('/player/:id/update', player_controller.player_update_post);
 
 module.exports = router;
