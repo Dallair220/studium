@@ -13,6 +13,7 @@
   font-family: 'Nunito', sans-serif;
   color: white;
   font-size: 20px;
+  background: linear-gradient(to bottom, var(--dark-blue), var(--purple));
 }
 
 html,
@@ -45,8 +46,6 @@ a:hover {
   justify-items: center;
   overflow: auto;
   min-height: 100vh;
-  min-width: 100vw;
-  background: linear-gradient(to bottom, var(--dark-blue), var(--purple));
 }
 .header {
   grid-area: header;

@@ -19,6 +19,11 @@ exports.player_create_post = [
   body('tagLine', 'Error in Tagline').trim().isLength({ min: 3, max: 5 }).escape(),
   // Process request
   asyncHandler(async (req, res, next) => {
+    const playerCount = await Player.countDocuments({});
+    if (playerCount >= 15) {
+      res.json({ status: 'error', message: 'Maximum number of players reached.' });
+      return;
+    }
     // Extract the validation errors from a request.
     const errors = validationResult(req);
     // If there are errors, send them to the client.
