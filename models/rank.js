@@ -23,11 +23,10 @@ const RankSchema = new mongoose.Schema({
   leaguePoints: { type: Number, required: true },
   wins: { type: Number, required: true },
   losses: { type: Number, required: true },
-  gamesPlayed: { type: Number, required: true },
 });
 
 RankSchema.virtual('winRate').get(function () {
-  return this.wins / this.gamesPlayed;
+  return this.wins / (this.wins + this.losses);
 });
 
 RankSchema.virtual('rankDisplay').get(function () {
