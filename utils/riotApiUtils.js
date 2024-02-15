@@ -7,7 +7,7 @@ async function getInfoBySummonerName(summonerName) {
     );
     const summonerData = await response.json();
     if (summonerData.status?.status_code === 404) {
-      throw new Error('Summoner not found');
+      throw new Error('Player not found');
     }
     if (!response.ok) {
       throw new Error(summonerData.status.message);
