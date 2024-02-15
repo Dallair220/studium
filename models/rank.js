@@ -19,10 +19,10 @@ const RankSchema = new mongoose.Schema({
       'CHALLENGER',
     ],
   }, // soloRank.tier
-  division: { type: String, required: true, enum: ['I', 'II', 'III', 'IV'] }, // soloRank.rank
-  leaguePoints: { type: Number, required: true },
-  wins: { type: Number, required: true },
-  losses: { type: Number, required: true },
+  division: { type: String, enum: ['I', 'II', 'III', 'IV'] }, // soloRank.rank
+  leaguePoints: { type: Number },
+  wins: { type: Number },
+  losses: { type: Number },
 });
 
 RankSchema.virtual('winRate').get(function () {

@@ -6,11 +6,15 @@ async function getInfoBySummonerName(summonerName) {
       `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`
     );
     const summonerData = await response.json();
+    if (summonerData.status?.status_code === 404) {
+      throw new Error('Summoner not found');
+    }
+    if (!response.ok) {
+      throw new Error(summonerData.status.message);
+    }
     return summonerData;
   } catch (error) {
-    // Fehler: Spieler nicht vorhanden.
-    console.error('Summoner is not existing. (or API error)');
-    return error;
+    throw new Error(error.message);
   }
 }
 
@@ -22,10 +26,12 @@ async function getRankedInfoBySummonerId(summonerId) {
       `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${process.env.RIOT_API_KEY}`
     );
     const rankedData = await response.json();
+    if (!response.ok) {
+      throw new Error(rankedData.status.message);
+    }
     return rankedData;
   } catch (error) {
-    console.error('Error!');
-    return error;
+    throw new Error(error.message);
   }
 }
 

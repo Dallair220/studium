@@ -29,4 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  res.status(500).json({ status: 'error', message: err.message });
+});
+
 module.exports = app;
