@@ -1,32 +1,19 @@
 import '../styles/CardList.css';
 import { useEffect, useState } from 'react';
 
-export default function CardList({ removeHandler }) {
-  const [summonerNames, setSummonerNames] = useState([]);
-
-  const fetchData = async () => {
-    const response = await fetch('/players', { method: 'GET' });
-    const data = await response.json();
-    console.log('data: ', data);
-    setSummonerNames(data.sortedPlayers);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+export default function CardList({ players, removePlayer }) {
   return (
     <div className="cardContainer">
-      {console.log('summonerNames: ', summonerNames)}
-      {summonerNames?.map((entry, index) => {
+      {players?.map((player, index) => {
         return (
           <Card
-            ok={console.log(entry)}
-            key={entry._id}
-            name={entry.gameName}
+            key={player._id}
+            name={player.gameName}
             ranking={index + 1}
-            profileIconId={entry.profileIconId}
-            soloRank={entry.rank}
-            removeHandler={removeHandler}
+            profileIconId={player.profileIconId}
+            soloRank={player.rank}
+            removePlayer={removePlayer}
+            playerId={player._id}
           />
         );
       })}
@@ -34,7 +21,14 @@ export default function CardList({ removeHandler }) {
   );
 }
 
-function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
+function Card({
+  ranking,
+  name,
+  soloRank,
+  profileIconId,
+  removePlayer,
+  playerId,
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   const rankName =
@@ -62,14 +56,14 @@ function Card({ ranking, name, soloRank, profileIconId, removeHandler }) {
       <Icon
         isHovered={isHovered}
         iconId={profileIconId}
-        removeHandler={removeHandler}
-        summonerName={name}
+        removePlayer={removePlayer}
+        playerId={playerId}
       />
     </div>
   );
 }
 
-function Icon({ isHovered, iconId, removeHandler, summonerName }) {
+function Icon({ isHovered, iconId, removePlayer, playerId }) {
   return (
     <>
       {isHovered ? (
@@ -81,7 +75,7 @@ function Icon({ isHovered, iconId, removeHandler, summonerName }) {
           <img
             className="deleteImg icon"
             draggable="false"
-            onClick={() => removeHandler(summonerName)}
+            onClick={() => removePlayer(playerId)}
             src={'https://cdn-icons-png.flaticon.com/512/1828/1828665.png'}
           />
         </>

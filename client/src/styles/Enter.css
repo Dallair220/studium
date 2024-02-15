@@ -26,3 +26,11 @@ input {
   margin: 5px;
   font-size: 20px;
 }
+
+.gameName {
+  width: 8.5rem;
+}
+
+.tagLine {
+  width: 4rem;
+}
