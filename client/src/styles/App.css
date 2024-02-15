@@ -162,3 +162,26 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.spinner {
+  border: 4px solid #0f2d44;
+  border-top: 4px solid #ffdb5c;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

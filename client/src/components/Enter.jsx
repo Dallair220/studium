@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/Enter.css';
 
-export default function Enter({ createPlayer, handleRefresh }) {
+export default function Enter({ createPlayer, updateAllPlayers }) {
   const [gameName, setGameName] = useState('');
   const [tagLine, setTagLine] = useState('EUW');
 
@@ -15,7 +15,11 @@ export default function Enter({ createPlayer, handleRefresh }) {
   return (
     <div className="enter">
       <form onSubmit={handleSubmit}>
-        <button type="button" onClick={handleRefresh} className="add refresh">
+        <button
+          type="button"
+          onClick={updateAllPlayers}
+          className="add refresh"
+        >
           Refresh
         </button>
         <input
