@@ -4,8 +4,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
+require('./config/passport');
 
 const apiRouter = require('./routes/api');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -15,6 +19,11 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 
 // Middleware
 app.use(logger('dev'));
+
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -22,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', apiRouter);
+app.use('/auth', authRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
