@@ -12,17 +12,17 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/register', {
+      const response = await fetch('/auth/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
       if (response.ok) {
-        navigate('/');
-        toast.success(data.message);
+        navigate('/login');
+        setTimeout(() => {
+          toast.success(data.message);
+        }, 50);
       } else {
         toast.warning(data.message, { autoClose: 3500 });
       }

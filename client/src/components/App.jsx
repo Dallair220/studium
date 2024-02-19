@@ -9,6 +9,7 @@ import CardList from './CardList';
 function App() {
   const [players, setPlayers] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const getAllPlayers = async () => {
     try {
@@ -97,7 +98,38 @@ function App() {
     setIsUpdating(false);
   };
 
+  const checkAuthentication = async () => {
+    try {
+      const response = await fetch('/auth/check', {
+        method: 'GET',
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      setIsAuthenticated(data.isAuthenticated);
+    } catch (error) {
+      toast.error(error.message, { autoClose: 5000 });
+    }
+  };
+
+  const logout = async () => {
+    try {
+      const response = await fetch('/auth/logout', {
+        method: 'POST',
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      checkAuthentication();
+    } catch (error) {
+      toast.error(error.message, { autoClose: 5000 });
+    }
+  };
+
   useEffect(() => {
+    checkAuthentication();
     getAllPlayers();
   }, []);
 
@@ -116,12 +148,20 @@ function App() {
             gap: '1rem',
           }}
         >
-          <Link to="/login" className="login">
-            Login
-          </Link>
-          <Link to="/register" className="register">
-            Register
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/" className="logout" onClick={() => logout()}>
+              Logout
+            </Link>
+          ) : (
+            <>
+              <Link to="/login" className="login">
+                Login
+              </Link>
+              <Link to="/register" className="register">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
       <div className="content">

@@ -12,17 +12,18 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
+      console.log(data);
       if (response.ok) {
         navigate('/');
-        toast.success(data.message);
+        setTimeout(() => {
+          toast.success(data.message);
+        }, 50);
       } else {
         toast.warning(data.message, { autoClose: 3500 });
       }
