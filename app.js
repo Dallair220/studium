@@ -5,18 +5,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
 // MongoDB connection
-mongoose.set('strictQuery', false);
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(process.env.MONGODB_CONNECTION_URI);
-  console.log('database connected');
-}
+mongoose.connect(process.env.MONGODB_CONNECTION_URI);
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Middleware
 app.use(logger('dev'));
@@ -26,12 +21,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api', apiRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  res.status(500).json({ status: 'error', message: err.message });
+  res.status(500).json({ status: 'server error', message: err.message });
 });
 
 module.exports = app;

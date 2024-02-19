@@ -11,7 +11,7 @@ function App() {
 
   const getAllPlayers = async () => {
     try {
-      const response = await fetch('/players', {
+      const response = await fetch('api/players', {
         method: 'GET',
       });
       const data = await response.json();
@@ -26,17 +26,18 @@ function App() {
 
   const createPlayer = async (gameName, tagLine) => {
     try {
-      const response = await fetch('/player/create', {
+      const response = await fetch('api/players', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ gameName, tagLine }),
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.message);
-      }
-      if (data.status === 'error') {
-        toast.warning(data.message);
+        if (data.status === 'error') {
+          toast.warning(data.message);
+        } else {
+          throw new Error(data.message);
+        }
       }
       if (data.status === 'success') {
         toast.success(data.message);
@@ -49,8 +50,8 @@ function App() {
 
   const updatePlayer = async (playerId) => {
     try {
-      const response = await fetch(`/player/${playerId}/update`, {
-        method: 'POST',
+      const response = await fetch(`api/players/${playerId}`, {
+        method: 'PUT',
       });
       const data = await response.json();
       if (!response.ok) {
@@ -63,15 +64,16 @@ function App() {
 
   const removePlayer = async (playerId) => {
     try {
-      const response = await fetch(`/player/${playerId}/delete`, {
-        method: 'POST',
+      const response = await fetch(`api/players/${playerId}`, {
+        method: 'DELETE',
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.message);
-      }
-      if (data.status === 'error') {
-        toast.warning(data.message);
+        if (data.status === 'error') {
+          toast.warning(data.message);
+        } else {
+          throw new Error(data.message);
+        }
       }
       if (data.status === 'success') {
         toast.success(data.message);

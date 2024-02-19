@@ -6,29 +6,32 @@ const Player = require('../models/player');
 const Rank = require('../models/rank');
 
 // Return list of all Players.
-exports.player_list_get = asyncHandler(async (req, res, next) => {
+exports.players_read = asyncHandler(async (req, res, next) => {
   const allPlayers = await Player.find({}).populate('rank');
   const sortedPlayers = sortLadder(allPlayers);
   res.json({ status: 'success', sortedPlayers });
 });
 
 // Handle Player create on POST.
-exports.player_create_post = [
+exports.player_create = [
   // Validate and sanitize fields.
   body('gameName', 'Error in Summoner name').trim().isLength({ min: 3, max: 23 }).escape(),
   body('tagLine', 'Error in Tagline').trim().isLength({ min: 3, max: 5 }).escape(),
   // Process request
   asyncHandler(async (req, res, next) => {
+    // Check if the maximum number of players has been reached.
     const playerCount = await Player.countDocuments({});
-    if (playerCount >= 15) {
-      res.json({ status: 'error', message: 'Maximum number of players reached.' });
+    if (playerCount >= 10) {
+      // 403 Forbidden: The server understood the request, but is refusing to fulfill it.
+      res.status(403).json({ status: 'error', message: 'Maximum number of players reached.' });
       return;
     }
     // Extract the validation errors from a request.
     const errors = validationResult(req);
     // If there are errors, send them to the client.
     if (!errors.isEmpty()) {
-      res.json({ status: 'error', message: errors.array()[0].msg });
+      // 422 Unprocessable Entity
+      res.status(422).json({ status: 'error', message: errors.array()[0].msg });
       return;
     }
     // Get the summoner's rank information.
@@ -36,7 +39,10 @@ exports.player_create_post = [
     // Check if the player already exists in the database.
     const playerExists = await Player.findOne({ gameName: summonerData.gameName });
     if (playerExists) {
-      res.json({ status: 'error', message: summonerData.gameName + ' already exists.' });
+      // 409 Conflict
+      res
+        .status(409)
+        .json({ status: 'error', message: summonerData.gameName + ' already exists.' });
       return;
     }
     // Create a Rank object
@@ -61,16 +67,17 @@ exports.player_create_post = [
   }),
 ];
 
-// Handle Player delete on POST.
-exports.player_delete_post = asyncHandler(async (req, res, next) => {
+// Handle Player delete on DELETE.
+exports.player_delete = asyncHandler(async (req, res, next) => {
   const existingPlayer = await Player.findById(req.params.id);
   if (existingPlayer === null) {
-    res.json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
+    // 404 Not Found
+    res.status(404).json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
     return;
   }
   const existingRank = await Rank.findById(existingPlayer.rank);
   if (existingRank === null) {
-    res.json({ status: 'error', message: 'Rank not found. ID: ' + existingPlayer.rank });
+    res.status(404).json({ status: 'error', message: 'Rank not found: ' + existingPlayer.rank });
     return;
   }
   await Player.findByIdAndDelete(req.params.id);
@@ -78,11 +85,11 @@ exports.player_delete_post = asyncHandler(async (req, res, next) => {
   res.json({ status: 'success', message: existingPlayer.gameName + ' deleted.' });
 });
 
-// Handle Player update on POST.
-exports.player_update_post = asyncHandler(async (req, res, next) => {
+// Handle Player update on PUT.
+exports.player_update = asyncHandler(async (req, res, next) => {
   const playerToUpdate = await Player.findById(req.params.id);
   if (playerToUpdate === null) {
-    res.json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
+    res.status(404).json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
     return;
   }
   // Get the summoner's rank information.
