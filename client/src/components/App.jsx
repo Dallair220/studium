@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -103,7 +104,25 @@ function App() {
   return (
     <div className="container">
       <div className="header">
+        <div style={{ width: '20%' }}></div>
         <h1>League Ladder</h1>
+        <div
+          style={{
+            width: '20%',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginRight: '1rem',
+            marginTop: '-1rem',
+            gap: '1rem',
+          }}
+        >
+          <Link to="/login" className="login">
+            Login
+          </Link>
+          <Link to="/register" className="register">
+            Register
+          </Link>
+        </div>
       </div>
       <div className="content">
         <Enter
@@ -118,7 +137,18 @@ function App() {
           <CardList players={players} removePlayer={removePlayer} />
         )}
       </div>
-      <div className="footer"></div>
+      <div className="footer">
+        <span style={{ fontSize: '14px', color: '#c1c1c1' }}>
+          Made by Paul Hermann - {''}
+        </span>
+        <a
+          style={{ fontSize: '14px' }}
+          href="https://github.com/Dallair220/studium"
+          target="_blank"
+        >
+          View Github
+        </a>
+      </div>
       <ToastContainer autoClose={2000} theme="dark" />
     </div>
   );
