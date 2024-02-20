@@ -1,5 +1,6 @@
-const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { body, validationResult } = require('express-validator');
 const User = require('../models/user');
 
 // POST request to register user.
@@ -14,20 +15,26 @@ exports.user_register = [
       // 422 Unprocessable Entity
       return res.status(422).json({ status: 'error', message: errors.array()[0].msg });
     }
-    try {
-      const user = new User({
-        email: req.body.email,
-        password: req.body.password,
-      });
-      const result = await user.save();
-      res.json({ status: 'success', message: 'User registered successfully' });
-    } catch (err) {
-      if (err.code === 11000) {
-        // mongoose error code 11000 is for duplicate key error
-        return res.status(409).json({ status: 'error', message: 'User already exists' });
+    // Hash the password
+    bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+      if (err) {
+        return next(err);
       }
-      return next(err);
-    }
+      try {
+        const user = new User({
+          email: req.body.email,
+          password: hashedPassword,
+        });
+        await user.save();
+        res.json({ status: 'success', message: 'User registered successfully' });
+      } catch (err) {
+        if (err.code === 11000) {
+          // mongoose error code 11000 is for duplicate key error
+          return res.status(409).json({ status: 'error', message: 'User already exists' });
+        }
+        return next(err);
+      }
+    });
   },
 ];
 
