@@ -98,21 +98,6 @@ function App() {
     setIsUpdating(false);
   };
 
-  const checkAuthentication = async () => {
-    try {
-      const response = await fetch('/auth/check', {
-        method: 'GET',
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message);
-      }
-      setIsAuthenticated(data.isAuthenticated);
-    } catch (error) {
-      toast.error(error.message, { autoClose: 5000 });
-    }
-  };
-
   const logout = async () => {
     try {
       const response = await fetch('/auth/logout', {
@@ -123,6 +108,21 @@ function App() {
         throw new Error(data.message);
       }
       checkAuthentication();
+    } catch (error) {
+      toast.error(error.message, { autoClose: 5000 });
+    }
+  };
+
+  const checkAuthentication = async () => {
+    try {
+      const response = await fetch('/auth/check', {
+        method: 'GET',
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      setIsAuthenticated(data.isAuthenticated);
     } catch (error) {
       toast.error(error.message, { autoClose: 5000 });
     }
