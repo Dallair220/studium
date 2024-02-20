@@ -187,3 +187,7 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.Toastify__toast-body > div {
+  font-size: 18px;
+}
