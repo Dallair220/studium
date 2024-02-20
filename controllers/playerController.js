@@ -23,16 +23,16 @@ exports.player_create = [
     const playerCount = await Player.countDocuments({});
     if (playerCount >= 10) {
       // 403 Forbidden: The server understood the request, but is refusing to fulfill it.
-      res.status(403).json({ status: 'error', message: 'Maximum number of players reached.' });
-      return;
+      return res
+        .status(403)
+        .json({ status: 'error', message: 'Maximum number of players reached.' });
     }
     // Extract the validation errors from a request.
     const errors = validationResult(req);
     // If there are errors, send them to the client.
     if (!errors.isEmpty()) {
       // 422 Unprocessable Entity
-      res.status(422).json({ status: 'error', message: errors.array()[0].msg });
-      return;
+      return res.status(422).json({ status: 'error', message: errors.array()[0].msg });
     }
     // Get the summoner's rank information.
     const summonerData = await bundleInfoBySummonerName(req.body.gameName);
@@ -40,10 +40,9 @@ exports.player_create = [
     const playerExists = await Player.findOne({ gameName: summonerData.gameName });
     if (playerExists) {
       // 409 Conflict
-      res
+      return res
         .status(409)
         .json({ status: 'error', message: summonerData.gameName + ' already exists.' });
-      return;
     }
     // Create a Rank object
     const rank = new Rank({
@@ -72,13 +71,15 @@ exports.player_delete = asyncHandler(async (req, res, next) => {
   const existingPlayer = await Player.findById(req.params.id);
   if (existingPlayer === null) {
     // 404 Not Found
-    res.status(404).json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
-    return;
+    return res
+      .status(404)
+      .json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
   }
   const existingRank = await Rank.findById(existingPlayer.rank);
   if (existingRank === null) {
-    res.status(404).json({ status: 'error', message: 'Rank not found: ' + existingPlayer.rank });
-    return;
+    return res
+      .status(404)
+      .json({ status: 'error', message: 'Rank not found: ' + existingPlayer.rank });
   }
   await Player.findByIdAndDelete(req.params.id);
   await Rank.findByIdAndDelete(existingPlayer.rank);
@@ -89,8 +90,9 @@ exports.player_delete = asyncHandler(async (req, res, next) => {
 exports.player_update = asyncHandler(async (req, res, next) => {
   const playerToUpdate = await Player.findById(req.params.id);
   if (playerToUpdate === null) {
-    res.status(404).json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
-    return;
+    return res
+      .status(404)
+      .json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
   }
   // Get the summoner's rank information.
   const summonerData = await bundleInfoBySummonerName(playerToUpdate.gameName);

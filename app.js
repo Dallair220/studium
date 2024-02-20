@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 require('./config/passport');
 
-const apiRouter = require('./routes/api');
+const playerRouter = require('./routes/player');
 const authRouter = require('./routes/auth');
 
 const app = express();
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', apiRouter);
+app.use('/players', playerRouter);
 app.use('/auth', authRouter);
 
 // Error handling middleware

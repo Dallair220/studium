@@ -13,7 +13,7 @@ function App() {
 
   const getAllPlayers = async () => {
     try {
-      const response = await fetch('api/players', {
+      const response = await fetch('/players', {
         method: 'GET',
       });
       const data = await response.json();
@@ -28,7 +28,7 @@ function App() {
 
   const createPlayer = async (gameName, tagLine) => {
     try {
-      const response = await fetch('api/players', {
+      const response = await fetch('/players', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ gameName, tagLine }),
@@ -52,7 +52,7 @@ function App() {
 
   const updatePlayer = async (playerId) => {
     try {
-      const response = await fetch(`api/players/${playerId}`, {
+      const response = await fetch(`/players/${playerId}`, {
         method: 'PUT',
       });
       const data = await response.json();
@@ -66,7 +66,7 @@ function App() {
 
   const removePlayer = async (playerId) => {
     try {
-      const response = await fetch(`api/players/${playerId}`, {
+      const response = await fetch(`/players/${playerId}`, {
         method: 'DELETE',
       });
       const data = await response.json();
