@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,7 @@ function App() {
   const [players, setPlayers] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const getAllPlayers = async () => {
     try {
@@ -46,7 +47,14 @@ function App() {
         getAllPlayers();
       }
     } catch (error) {
-      toast.error(error.message, { autoClose: 5000 });
+      if (error.message === 'Unauthorized. Please log in.') {
+        navigate('/login');
+        setTimeout(() => {
+          toast.error(error.message);
+        }, 50);
+      } else {
+        toast.error(error.message, { autoClose: 5000 });
+      }
     }
   };
 
@@ -82,7 +90,14 @@ function App() {
         getAllPlayers();
       }
     } catch (error) {
-      toast.error(error.message, { autoClose: 5000 });
+      if (error.message === 'Unauthorized. Please log in.') {
+        navigate('/login');
+        setTimeout(() => {
+          toast.error(error.message);
+        }, 50);
+      } else {
+        toast.error(error.message, { autoClose: 5000 });
+      }
     }
   };
 
