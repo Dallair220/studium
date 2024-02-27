@@ -35,7 +35,7 @@ exports.player_create = [
       return res.status(422).json({ status: 'error', message: errors.array()[0].msg });
     }
     // Get the summoner's rank information.
-    const summonerData = await bundleInfoBySummonerName(req.body.gameName);
+    const summonerData = await bundleInfoBySummonerName(req.body.gameName, req.body.tagLine);
     // Check if the player already exists in the database.
     const playerExists = await Player.findOne({ gameName: summonerData.gameName });
     if (playerExists) {
@@ -56,7 +56,7 @@ exports.player_create = [
     // Create a Player object
     const newPlayer = new Player({
       gameName: summonerData.gameName,
-      tagLine: req.body.tagLine,
+      tagLine: summonerData.tagLine,
       profileIconId: summonerData.profileIconId,
       rank: rank,
     });
@@ -95,7 +95,10 @@ exports.player_update = asyncHandler(async (req, res, next) => {
       .json({ status: 'error', message: 'Player not found. ID: ' + req.params.id });
   }
   // Get the summoner's rank information.
-  const summonerData = await bundleInfoBySummonerName(playerToUpdate.gameName);
+  const summonerData = await bundleInfoBySummonerName(
+    playerToUpdate.gameName,
+    playerToUpdate.tagLine
+  );
   // Update Rank object
   const updatedRank = new Rank({
     rank: summonerData.soloRank.tier,

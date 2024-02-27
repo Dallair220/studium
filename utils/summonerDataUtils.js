@@ -1,18 +1,24 @@
-const { getInfoBySummonerName, getRankedInfoBySummonerId } = require('./riotApiUtils');
+const { getAccountByRiotId, getSummonerByPuuid, getRankedInfoByPuuid } = require('./riotApiUtils');
 
 // This function bundles the summoner's information by their name
-async function bundleInfoBySummonerName(summonerName) {
-  // Fetching summoner's basic information
-  const summonerData = await getInfoBySummonerName(summonerName);
-  const gameName = summonerData.name;
-  const profileIconId = summonerData.profileIconId;
+async function bundleInfoBySummonerName(gameName, tagLine) {
+  // get accountData, such as puuid
+  const accountData = await getAccountByRiotId(gameName, tagLine);
 
-  // Fetching summoner's ranked information
-  const rankedData = await getRankedInfoBySummonerId(summonerData.id);
+  // get summonerData, such as summonerLevel, profileIconId, etc.
+  const summonerData = await getSummonerByPuuid(accountData.puuid);
+
+  // get rankedData, such as solo rank
+  const rankedData = await getRankedInfoByPuuid(summonerData.id);
   const soloRank = findSoloRank(rankedData);
 
   // Returning bundled information
-  return { gameName, profileIconId, soloRank };
+  return {
+    gameName: accountData.gameName,
+    tagLine: accountData.tagLine,
+    profileIconId: summonerData.profileIconId,
+    soloRank,
+  };
 }
 
 // This function finds the solo rank from the ranked data

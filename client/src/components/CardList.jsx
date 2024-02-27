@@ -8,7 +8,8 @@ export default function CardList({ players, removePlayer }) {
         return (
           <Card
             key={player._id}
-            name={player.gameName}
+            gameName={player.gameName}
+            tagLine={player.tagLine}
             ranking={index + 1}
             profileIconId={player.profileIconId}
             soloRank={player.rank}
@@ -23,7 +24,8 @@ export default function CardList({ players, removePlayer }) {
 
 function Card({
   ranking,
-  name,
+  gameName,
+  tagLine,
   soloRank,
   profileIconId,
   removePlayer,
@@ -46,11 +48,11 @@ function Card({
     >
       <div className="ranking">{ranking}</div>
       <a
-        href={`https://u.gg/lol/profile/euw1/${name}`}
+        href={`https://u.gg/lol/profile/euw1/${gameName}-${tagLine}/overview`}
         target="_blank"
         className="summonerName"
       >
-        {name}
+        {gameName}
       </a>
       <div className="rank">{rankDisplay}</div>
       <Icon

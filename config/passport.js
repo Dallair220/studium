@@ -20,7 +20,6 @@ passport.use(
         if (!pwIsValid) {
           return done(null, false, { message: 'Incorrect password' });
         }
-        console.log('user', user);
         return done(null, user);
       } catch (err) {
         return done(err);
