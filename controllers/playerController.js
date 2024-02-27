@@ -59,6 +59,7 @@ exports.player_create = [
       tagLine: summonerData.tagLine,
       profileIconId: summonerData.profileIconId,
       rank: rank,
+      createdByUser: req.user.email,
     });
     await newPlayer.save();
     // Send successfull response to the client.
