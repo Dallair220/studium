@@ -61,6 +61,7 @@ function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              minLength="5"
             />
           </div>
           <div style={{ marginTop: '0.25rem' }}>
@@ -71,6 +72,7 @@ function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              minLength="5"
             />
           </div>
           <button
