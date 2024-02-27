@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
@@ -12,6 +14,30 @@ const playerRouter = require('./routes/player');
 const authRouter = require('./routes/auth');
 
 const app = express();
+
+// Set up rate limiter: maximum of 200 requests per minute
+const RateLimit = require('express-rate-limit');
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 200,
+  handler: (req, res) => {
+    res.status(429).json({ message: 'Too many requests, please try again later.' });
+  },
+});
+// Apply rate limiter to all requests
+app.use(limiter);
+
+// Set up security headers
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      imgSrc: ["'self'", 'https://static.bigbrain.gg', 'https://cdn-icons-png.flaticon.com'],
+    },
+  })
+);
+
+// Compress all routes
+app.use(compression());
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_CONNECTION_URI);
@@ -35,6 +61,7 @@ app.use('/auth', authRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
+  console.error('error', err.message);
   res.status(500).json({ status: 'server error', message: err.message });
 });
 

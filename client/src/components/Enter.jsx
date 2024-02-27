@@ -3,13 +3,13 @@ import '../styles/Enter.css';
 
 export default function Enter({ createPlayer, updateAllPlayers }) {
   const [gameName, setGameName] = useState('');
-  const [tagLine, setTagLine] = useState('EUW');
+  const [tagLine, setTagLine] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     createPlayer(gameName, tagLine);
     setGameName('');
-    setTagLine('EUW');
+    setTagLine('');
   };
 
   return (
@@ -28,12 +28,12 @@ export default function Enter({ createPlayer, updateAllPlayers }) {
           type="text"
           name="gameName"
           className="gameName"
-          placeholder="Summoner name"
+          placeholder="Game name"
           minLength={3}
           maxLength={23}
           required
         />
-        <span>#</span>
+        <span style={{ color: 'black' }}>#</span>
         <input
           value={tagLine}
           onChange={(e) => setTagLine(e.target.value)}
