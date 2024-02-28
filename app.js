@@ -31,6 +31,8 @@ app.use(limiter);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: ["'self'", 'https://accounts.google.com'],
       imgSrc: ["'self'", 'https://static.bigbrain.gg', 'https://cdn-icons-png.flaticon.com'],
     },
   })

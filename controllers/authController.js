@@ -22,6 +22,7 @@ exports.user_register = [
       }
       try {
         const user = new User({
+          provider: 'local',
           email: req.body.email,
           password: hashedPassword,
         });
@@ -85,3 +86,16 @@ exports.user_check = (req, res) => {
     res.status(200).json({ isAuthenticated: false });
   }
 };
+
+exports.user_google = passport.authenticate('google', {
+  scope: ['email', 'profile'],
+});
+
+exports.user_google_callback = [
+  passport.authenticate('google', {
+    successRedirect: '/',
+  }),
+  (req, res) => {
+    res.json({ status: 'success', message: 'User logged in successfully' });
+  },
+];
