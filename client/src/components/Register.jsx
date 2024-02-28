@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleSVG, Divider } from './Login';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -43,8 +44,7 @@ function Register() {
         >
           ← Home
         </Link>
-        <form
-          onSubmit={handleSubmit}
+        <div
           style={{
             border: '1px solid #c1c1c1',
             padding: '1rem',
@@ -52,36 +52,46 @@ function Register() {
             borderRadius: '0.5rem',
           }}
         >
-          <div>
-            <label htmlFor="email">Email:</label>
-            <br />
-            <input
-              name="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              minLength="5"
-            />
-          </div>
-          <div style={{ marginTop: '0.25rem' }}>
-            <label htmlFor="password">Password:</label> <br />
-            <input
-              name="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              minLength="5"
-            />
-          </div>
           <button
-            style={{ padding: '0.125rem 0.5rem', marginTop: '0.5rem' }}
-            type="submit"
+            className="google-button"
+            onClick={() => (window.location.href = '/auth/google')}
           >
-            Register
+            <GoogleSVG />
+            <span>Login with Google</span>
           </button>
-        </form>
+          <Divider />
+          <form onSubmit={handleSubmit} style={{ fontSize: '18px' }}>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <br />
+              <input
+                name="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                minLength="5"
+              />
+            </div>
+            <div style={{ marginTop: '0.25rem' }}>
+              <label htmlFor="password">Password:</label> <br />
+              <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                minLength="5"
+              />
+            </div>
+            <button
+              style={{ padding: '0.125rem 0.5rem', marginTop: '0.5rem' }}
+              type="submit"
+            >
+              Register
+            </button>
+          </form>
+        </div>
         <div style={{ fontSize: '14px' }}>
           Already have an account? <Link to="/login">Login here</Link>
         </div>
