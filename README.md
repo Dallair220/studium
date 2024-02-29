@@ -19,8 +19,16 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 ## Lokal ausführen
 - Klone dieses Repository auf Ihren lokalen Rechner
 - Führe `npm install` innerhalb von /studium aus
-- Erstelle eine .env-Datei und setze die `MONGODB_URI` Ihres MongoDB-Clusters.
-- Wechsel zu /client und erstelle den Build des Frontends mit `npm run build`
+- Erstelle eine .env-Datei und setze die folgenden Variablen: DOMAIN="http://localhost:3000"
+```
+MONGODB_CONNECTION_URI="mongodb+srv://phfinan:CzMnEuaxU8QMHXV6@cluster0.8zblxkd.mongodb.net/?retryWrites=true&w=majority"
+RIOT_API_KEY="RGAPI-9c827046-d904-4245-ae5d-d4d5ac73dc51"
+SESSION_SECRET="zmoahX9kBRPMbT980245VkmJLW"
+GOOGLE_CLIENT_ID="861047825208-2mbgf4havvmorv3gsi65idg0o0abt0j1.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="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"
+```
+- Wechsel zu /client und installier ebenfalls mit `npm install`
+- Erstelle den Build des Frontends mit `npm run build`
 - Starte den Server mit `npm run serverstart`, innerhalb des root-Ordners
 - Besuche die Website im Browser unter http://localhost:3000/
 
