@@ -7,14 +7,14 @@ Die Anwendung nutzt eine Express.js-Backend und ein React-Frontend. Die Daten de
 Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https://praxisprojekt-cf89137f47c5.herokuapp.com/
 
 ## Technische Aspekte
-- Node.js und Express.js: Verwendet für den Aufbau der serverseitigen Logik, die Handhabung von Routen und HTTP-Anfragen (Controller).
-- MVC-Architektur: Das Projekt folgt dem Model-View-Controller (MVC) Designmuster.
-- MongoDB und Mongoose: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung. Unterstützt CRUD-Operationen auf Datenbankeinträge.
-- Benutzerauthentifizierung: Implementierung von Google OAuth2 und lokaler Authentifizierung mit Passport.js. Bei der lokalen Strategie wird das Passwort-Hashing mit Bcrypt umgesetzt.
-- Die Anwendung integriert die Riot Games API.
-- Best Practices: Helmet für Sicherheit, Compression für Leistung, und Rate Limiting gegen DoS-Angriffe.
-- React und Vite: React wird für das User Interface genutzt, während Vite für das Bundling und die Entwicklungsumgebung eingesetzt wird.
-- Deployment: Die Anwendung wird auf Heroku gehostet. Das Verzeichnis /client/dist, enthält den produktionsbereiten clientseitigen Code. 
+- **Node.js und Express.js: Verwendet für den Aufbau der serverseitigen Logik, die Handhabung von Routen und HTTP-Anfragen (Controller).
+- **MVC-Architektur: Das Projekt folgt dem Model-View-Controller (MVC) Designmuster.
+- **MongoDB und Mongoose: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung. Unterstützt CRUD-Operationen auf Datenbankeinträge.
+- **Benutzerauthentifizierung: Implementierung von Google OAuth2 und lokaler Authentifizierung mit Passport.js. Bei der lokalen Strategie wird das Passwort-Hashing mit Bcrypt umgesetzt.
+- **Riot Games API** wird genutzt.
+- **Best Practices**: Helmet für Sicherheit, Compression für Leistung, und Rate Limiting gegen DoS-Angriffe.
+- **React und Vite**: React wird für das User Interface genutzt, während Vite für das Bundling und die Entwicklungsumgebung eingesetzt wird.
+- **Deployment**: Die Anwendung wird auf Heroku gehostet. Das Verzeichnis /client/dist, enthält den produktionsbereiten clientseitigen Code. 
 
 ## Lokal ausführen
 1. Klone dieses Repository auf Ihren lokalen Rechner
