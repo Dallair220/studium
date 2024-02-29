@@ -23,7 +23,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 - Starte den Server mit `npm run serverstart`
 - Besuche die Website im Browser unter http://localhost:3000/
 
-## Screenshots:
+## Screenshots
 ![image](https://github.com/Dallair220/studium/assets/93786532/748f6bdc-cc1d-41f1-8485-0c8860bc0cfe)
 
 ![image](https://github.com/Dallair220/studium/assets/93786532/b0d3eac4-c4ce-42ce-835f-d69fa4037092)
