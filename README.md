@@ -18,7 +18,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 
 ## Lokal ausführen
 - Klone dieses Repository auf Ihren lokalen Rechner
-- Führe `npm install` innerhalb von /inventory-application aus
+- Führe `npm install` innerhalb von /studium aus
 - Erstelle eine .env-Datei und setze die `MONGODB_URI` Ihres MongoDB-Clusters.
 - Starte den Server mit `npm run serverstart`
 - Besuche die Website im Browser unter http://localhost:3000/
