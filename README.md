@@ -8,7 +8,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 
 
 
-## Wichtige technische Aspekte sind:
+## Technische Aspekte:
 - Node.js und Express.js: Verwendet für den Aufbau der serverseitigen Logik, die Handhabung von Routen und HTTP-Anfragen (Controller).
 - MVC-Architektur: Das Projekt folgt dem Model-View-Controller (MVC) Designmuster.
 - MongoDB und Mongoose: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung. Unterstützt CRUD-Operationen auf Datenbankeinträge.
