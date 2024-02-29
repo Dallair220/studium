@@ -8,7 +8,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 
 
 
-Dieses Projekt ist eine auf Node.js basierende Webanwendung. Wichtige technische Aspekte sind:
+## Dieses Projekt ist eine auf Node.js basierende Webanwendung. Wichtige technische Aspekte sind:
 - Node.js und Express.js: Verwendet für den Aufbau der serverseitigen Logik, die Handhabung von Routen und HTTP-Anfragen (Controller).
 - MVC-Architektur: Das Projekt folgt dem Model-View-Controller (MVC) Designmuster.
 - MongoDB und Mongoose: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung. Unterstützt CRUD-Operationen auf Datenbankeinträge.
