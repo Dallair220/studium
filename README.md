@@ -1,6 +1,6 @@
 # TH Köln Praxisprojekt - League Ladder
 
-Das "League Ladder"-Projekt ist eine Webanwendung, die für das Praxisprojekt an der TH Köln entwickelt wurde. Es handelt sich um eine Plattform, die es Spielern des Spiels "League of Legends" ermöglicht, ihre Ranglistenpositionen zu verfolgen und zu vergleichen.
+Das "League Ladder"-Projekt ist eine Webanwendung, die für das Praxisprojekt an der TH Köln entwickelt wurde. Es handelt sich um eine Plattform, die es Spielern von "League of Legends" ermöglicht, ihre Ranglistenpositionen zu verfolgen und zu vergleichen.
 
 Die Anwendung nutzt eine Express.js-Backend und ein React-Frontend. Die Daten der Spieler und ihrer Ränge werden in einer MongoDB-Datenbank gespeichert und können über die bereitgestellten APIs abgerufen werden.
 
