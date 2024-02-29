@@ -20,7 +20,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 1. Klone dieses Repository auf Ihren lokalen Rechner
 2. Führe `npm install` innerhalb von /studium aus
 3. Erstelle eine .env-Datei und setze die folgenden Variablen:
-  - `MONGODB_CONNECTION_URI` = Der Connection String deines MongoDB Clusters
+  - `MONGODB_CONNECTION_URI` = Der Connection String deines MongoDB Clusters (https://cloud.mongodb.com/v2/)
   - `RIOT_API_KEY` = Generiere einen Key hier: https://developer.riotgames.com/
   - `SESSION_SECRET` (Optional, für Login/Registrierung) = Zufälliges Passwort
   - `GOOGLE_CLIENT_ID` und `GOOGLE_CLIENT_SECRET` (Optional, für Google OAuth2) = Erstelle deinen Zugang hier: https://console.cloud.google.com/apis/credentials > CREATE CREDENTIALS > OAuth client ID
