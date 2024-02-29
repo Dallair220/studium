@@ -1,4 +1,4 @@
-# League Ladder - Praxisprojekt TH Köln von Paul Hermann
+# League Ladder - Praxisprojekt TH Köln
 
 Das "League Ladder"-Projekt ist eine Webanwendung, die für das Praxisprojekt an der TH Köln entwickelt wurde. Es handelt sich um eine Plattform, die es Spielern von "League of Legends" ermöglicht, ihre Ranglistenpositionen zu verfolgen und zu vergleichen.
 
@@ -30,3 +30,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 
 ## Live Website
 https://praxisprojekt-cf89137f47c5.herokuapp.com/
+
+## Autor
+**Paul Hermann**  
+Email: paul.hermann@smail.th-koeln.de
