@@ -33,4 +33,4 @@ https://praxisprojekt-cf89137f47c5.herokuapp.com/
 
 ## Autor
 **Paul Hermann**  
-Email: paul.hermann@smail.th-koeln.de
+paul.hermann@smail.th-koeln.de
