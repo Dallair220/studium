@@ -20,7 +20,8 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 - Klone dieses Repository auf Ihren lokalen Rechner
 - Führe `npm install` innerhalb von /studium aus
 - Erstelle eine .env-Datei und setze die `MONGODB_URI` Ihres MongoDB-Clusters.
-- Starte den Server mit `npm run serverstart`
+- Wechsel zu /client und erstelle den Build des Frontends mit `npm run build`
+- Starte den Server mit `npm run serverstart`, innerhalb des root-Ordners
 - Besuche die Website im Browser unter http://localhost:3000/
 
 ## Screenshots
