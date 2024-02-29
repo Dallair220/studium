@@ -1,8 +1,11 @@
-# Praxisprojekt
+# TH Köln Praxisprojekt - League Ladder
 
-League Ladder Projekt (für TH Köln)
-
-Der Fokus liegt auf dem Backend mit Express.
+Dieses Projekt ist eine auf Node.js basierende Webanwendung. Wichtige technische Aspekte sind:
+- Node.js und Express.js: Verwendet für den Aufbau der serverseitigen Logik, die Handhabung von Routen und HTTP-Anfragen (Controller).
+- MongoDB und Mongoose: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung.
+- Benutzerauthentifizierung: Implementierung von Google OAuth2 und lokaler Authentifizierung mit Passport.js.
+- Vite: Verwendet für den Build des clientseitigen Codes.
+- React: Verwendet für den Aufbau der Benutzeroberfläche auf der Clientseite.
 
 Live Website: https://praxisprojekt-cf89137f47c5.herokuapp.com/
 
