@@ -12,7 +12,7 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 - Node.js und Express.js: Verwendet für den Aufbau der serverseitigen Logik, die Handhabung von Routen und HTTP-Anfragen (Controller).
 - MVC-Architektur: Das Projekt folgt dem Model-View-Controller (MVC) Designmuster.
 - MongoDB und Mongoose: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung. Unterstützt CRUD-Operationen auf Datenbankeinträge.
-- Benutzerauthentifizierung: Implementierung von Google OAuth2 und lokaler Authentifizierung mit Passport.js. Bei der lokalen Strategie wird das Passwort-Hashing mit bcrypt umgesetzt.
+- Benutzerauthentifizierung: Implementierung von Google OAuth2 und lokaler Authentifizierung mit Passport.js. Bei der lokalen Strategie wird das Passwort-Hashing mit Bcrypt umgesetzt.
 - Die Anwendung integriert die Riot Games API.
 - Best Practices: Helmet für Sicherheit, Compression für Leistung, und Rate Limiting gegen DoS-Angriffe.
 - React und Vite: React wird für das User Interface genutzt, während Vite für das Bundling und die Entwicklungsumgebung eingesetzt wird.
