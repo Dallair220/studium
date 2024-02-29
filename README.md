@@ -17,20 +17,17 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 - Deployment: Die Anwendung wird auf Heroku gehostet. Das Verzeichnis /client/dist, enthält den produktionsbereiten clientseitigen Code. 
 
 ## Lokal ausführen
-- Klone dieses Repository auf Ihren lokalen Rechner
-- Führe `npm install` innerhalb von /studium aus
-- Erstelle eine .env-Datei und setze die folgenden Variablen: DOMAIN="http://localhost:3000"
-```
-MONGODB_CONNECTION_URI="mongodb+srv://phfinan:CzMnEuaxU8QMHXV6@cluster0.8zblxkd.mongodb.net/?retryWrites=true&w=majority"
-RIOT_API_KEY="RGAPI-9c827046-d904-4245-ae5d-d4d5ac73dc51"
-SESSION_SECRET="zmoahX9kBRPMbT980245VkmJLW"
-GOOGLE_CLIENT_ID="861047825208-2mbgf4havvmorv3gsi65idg0o0abt0j1.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET="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"
-```
-- Wechsel zu /client und installier ebenfalls mit `npm install`
-- Erstelle den Build des Frontends mit `npm run build`
-- Starte den Server mit `npm run serverstart`, innerhalb des root-Ordners
-- Besuche die Website im Browser unter http://localhost:3000/
+1. Klone dieses Repository auf Ihren lokalen Rechner
+2. Führe `npm install` innerhalb von /studium aus
+3. Erstelle eine .env-Datei und setze die folgenden Variablen:
+  - `MONGODB_CONNECTION_URI` = Der Connection String deines MongoDB Clusters
+  - `RIOT_API_KEY` = Generiere einen Key hier: https://developer.riotgames.com/
+  - `SESSION_SECRET` (Optional, für Login/Registrierung) = Zufälliges Passwort
+  - `GOOGLE_CLIENT_ID` und `GOOGLE_CLIENT_SECRET` (Optional, für Google OAuth2) = Erstelle deinen Zugang hier: https://console.cloud.google.com/apis/credentials > CREATE CREDENTIALS > OAuth client ID
+4. Wechsel zu /client und installier ebenfalls mit `npm install`
+5. Erstelle den Build des Frontends mit `npm run build`
+6. Starte den Server mit `npm run serverstart`, innerhalb des root-Ordners
+7. Besuche die Website im Browser unter http://localhost:3000/
 
 ## Screenshots
 ![image](https://github.com/Dallair220/studium/assets/93786532/748f6bdc-cc1d-41f1-8485-0c8860bc0cfe)
