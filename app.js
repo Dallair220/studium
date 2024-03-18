@@ -49,7 +49,13 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 // Middleware
 app.use(logger('dev'));
 
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'not safe',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 

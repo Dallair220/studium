@@ -2,6 +2,9 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const User = require('../models/user');
 
+// If the environment variables are not set, the Google strategy will not be used
+if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) return;
+
 passport.use(
   new GoogleStrategy(
     {
