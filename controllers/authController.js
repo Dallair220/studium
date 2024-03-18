@@ -6,8 +6,8 @@ const User = require('../models/user');
 // POST request to register user.
 exports.user_register = [
   // Validate and sanitize fields.
-  body('email', 'Error in Email').trim().isLength({ min: 5 }).escape(),
-  body('password', 'Error in Password').trim().isLength({ min: 5 }).escape(),
+  body('email', 'Error in Email').trim().isLength({ min: 5, max: 50 }).escape(),
+  body('password', 'Error in Password').trim().isLength({ min: 10, max: 50 }).escape(),
   async (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);

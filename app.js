@@ -37,6 +37,7 @@ app.use(
     },
   })
 );
+app.disable('x-powered-by');
 
 // Compress all routes
 app.use(compression());
