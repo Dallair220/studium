@@ -81,7 +81,7 @@ function Register() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                minLength="5"
+                minLength="10"
               />
             </div>
             <button
