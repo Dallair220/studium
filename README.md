@@ -15,7 +15,8 @@ Die Live-Version der Anwendung kann unter diesem Link aufgerufen werden: https:/
 - **MongoDB und Mongoose**: NoSQL-Datenbank, verwendet für die Datenspeicherung und Schemavalidierung. Unterstützt CRUD-Operationen auf Datenbankeinträge.
 - **Benutzerauthentifizierung**: Implementierung von Google OAuth2 und lokaler Authentifizierung mit Passport.js. Bei der lokalen Strategie wird das Passwort-Hashing mit Bcrypt umgesetzt.
 - **Best Practices**: Helmet für Sicherheit, Compression für Leistung, und Rate Limiting gegen DoS-Angriffe.
-- **React und Vite**: React wird für das User Interface genutzt, während Vite für das Bundling und die Entwicklungsumgebung eingesetzt wird.
+- **React**: React wird für das User Interface genutzt.
+- **Next.js**: Wird für serverseitiges Rendern (SSR) und statische Seiten-Generierung (SSG) verwendet.
 - **Deployment**: Die Anwendung wird auf Heroku gehostet. Das Verzeichnis /client/dist, enthält den produktionsbereiten clientseitigen Code.
 
 ## Lokal ausführen
