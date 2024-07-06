@@ -1,5 +1,5 @@
 import '../styles/CardList.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function CardList({ players, removePlayer }) {
   return (
@@ -72,7 +72,7 @@ function Icon({ isHovered, iconId, removePlayer, playerId }) {
         <>
           <img
             className="icon"
-            src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
           />
           <img
             className="deleteImg icon"
@@ -84,7 +84,7 @@ function Icon({ isHovered, iconId, removePlayer, playerId }) {
       ) : (
         <img
           className="icon"
-          src={`https://static.bigbrain.gg/assets/lol/riot_static/13.17.1/img/profileicon/${iconId}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
         />
       )}
     </>

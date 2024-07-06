@@ -7,6 +7,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const cors = require('cors');
 const passport = require('passport');
 require('./config/passport');
 
@@ -14,6 +15,8 @@ const playerRouter = require('./routes/player');
 const authRouter = require('./routes/auth');
 
 const app = express();
+
+app.use(cors({ origin: 'http://localhost:3001' }));
 
 // Set up rate limiter: maximum of 200 requests per minute
 const RateLimit = require('express-rate-limit');
@@ -33,7 +36,11 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       connectSrc: ["'self'", 'https://accounts.google.com'],
-      imgSrc: ["'self'", 'https://static.bigbrain.gg', 'https://cdn-icons-png.flaticon.com'],
+      imgSrc: [
+        "'self'",
+        'https://ddragon.leagueoflegends.com',
+        'https://cdn-icons-png.flaticon.com',
+      ],
     },
   })
 );

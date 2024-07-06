@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import '../styles/App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Enter from './Enter';
 import CardList from './CardList';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 function App() {
   const [players, setPlayers] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const getAllPlayers = async () => {
     try {
-      const response = await fetch('/players', {
+      const response = await fetch('http://localhost:3000/players', {
         method: 'GET',
       });
       const data = await response.json();
@@ -29,7 +30,7 @@ function App() {
 
   const createPlayer = async (gameName, tagLine) => {
     try {
-      const response = await fetch('/players', {
+      const response = await fetch('http://localhost:3000/players', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ gameName, tagLine }),
@@ -48,7 +49,7 @@ function App() {
       }
     } catch (error) {
       if (error.message === 'Unauthorized. Please log in.') {
-        navigate('/login');
+        router.push('/login');
         setTimeout(() => {
           toast.error(error.message);
         }, 50);
@@ -60,9 +61,12 @@ function App() {
 
   const updatePlayer = async (playerId) => {
     try {
-      const response = await fetch(`/players/${playerId}`, {
-        method: 'PUT',
-      });
+      const response = await fetch(
+        `http://localhost:3000/players/${playerId}`,
+        {
+          method: 'PUT',
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message);
@@ -74,9 +78,12 @@ function App() {
 
   const removePlayer = async (playerId) => {
     try {
-      const response = await fetch(`/players/${playerId}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `http://localhost:3000/players/${playerId}`,
+        {
+          method: 'DELETE',
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         if (data.status === 'error') {
@@ -91,7 +98,7 @@ function App() {
       }
     } catch (error) {
       if (error.message === 'Unauthorized. Please log in.') {
-        navigate('/login');
+        router.push('/login');
         setTimeout(() => {
           toast.error(error.message);
         }, 50);
@@ -115,7 +122,7 @@ function App() {
 
   const logout = async () => {
     try {
-      const response = await fetch('/auth/logout', {
+      const response = await fetch('http://localhost:3000/auth/logout', {
         method: 'POST',
       });
       const data = await response.json();
@@ -130,7 +137,7 @@ function App() {
 
   const checkAuthentication = async () => {
     try {
-      const response = await fetch('/auth/check', {
+      const response = await fetch('http://localhost:3000/auth/check', {
         method: 'GET',
       });
       const data = await response.json();
@@ -164,15 +171,15 @@ function App() {
           }}
         >
           {isAuthenticated ? (
-            <Link to="/" className="logout" onClick={() => logout()}>
+            <Link href="/" className="logout" onClick={() => logout()}>
               Logout
             </Link>
           ) : (
             <>
-              <Link to="/login" className="login">
+              <Link href="/login" className="login">
                 Login
               </Link>
-              <Link to="/register" className="register">
+              <Link href="/register" className="register">
                 Register
               </Link>
             </>
