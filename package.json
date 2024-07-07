@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run client:build && node ./bin/www",
-    "client:build": "cd client && npm install && npm run build && cd ..",
-    "devstart": "nodemon ./bin/www",
-    "serverstart": "DEBUG=studium:* npm run devstart"
+    "start": "pnpm run client:build && node ./bin/www",
+    "client:build": "cd client && pnpm install && pnpm run build && cd ..",
+    "dev": "DEBUG=studium:* nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -16,6 +16,8 @@ const authRouter = require('./routes/auth');
 
 const app = express();
 
+app.set('trust proxy', true);
+
 app.use(cors({ origin: 'http://localhost:3001' }));
 
 // Set up rate limiter: maximum of 200 requests per minute
