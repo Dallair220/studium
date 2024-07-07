@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
@@ -32,21 +32,6 @@ const limiter = RateLimit({
 // Apply rate limiter to all requests
 app.use(limiter);
 
-// Set up security headers
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: ["'self'"],
-//       scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
-//       connectSrc: ["'self'", 'https://accounts.google.com'],
-//       imgSrc: [
-//         "'self'",
-//         'https://ddragon.leagueoflegends.com',
-//         'https://cdn-icons-png.flaticon.com',
-//       ],
-//     },
-//   })
-// );
 app.disable('x-powered-by');
 
 // Compress all routes

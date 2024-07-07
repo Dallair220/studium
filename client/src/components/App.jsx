@@ -15,9 +15,12 @@ function App() {
 
   const getAllPlayers = async () => {
     try {
-      const response = await fetch('http://localhost:3000/players', {
-        method: 'GET',
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + '/players',
+        {
+          method: 'GET',
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message);
@@ -30,11 +33,14 @@ function App() {
 
   const createPlayer = async (gameName, tagLine) => {
     try {
-      const response = await fetch('http://localhost:3000/players', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ gameName, tagLine }),
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + '/players',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ gameName, tagLine }),
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         if (data.status === 'error') {
@@ -62,7 +68,7 @@ function App() {
   const updatePlayer = async (playerId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/players/${playerId}`,
+        process.env.NEXT_PUBLIC_API_URL + `/players/${playerId}`,
         {
           method: 'PUT',
         },
@@ -79,7 +85,7 @@ function App() {
   const removePlayer = async (playerId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/players/${playerId}`,
+        process.env.NEXT_PUBLIC_API_URL + `/${playerId}`,
         {
           method: 'DELETE',
         },
@@ -122,9 +128,12 @@ function App() {
 
   const logout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/logout', {
-        method: 'POST',
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + '/auth/logout',
+        {
+          method: 'POST',
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message);
@@ -137,9 +146,12 @@ function App() {
 
   const checkAuthentication = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/check', {
-        method: 'GET',
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + '/auth/check',
+        {
+          method: 'GET',
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message);
