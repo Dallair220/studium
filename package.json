@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "pnpm run client:build && node ./bin/www",
-    "client:build": "cd client && pnpm install && pnpm run build && cd ..",
+    "start": "npm run client:build && node ./bin/www",
+    "client:build": "cd client && npm install && npm run build && cd ..",
     "dev": "DEBUG=studium:* nodemon ./bin/www"
   },
   "dependencies": {
@@ -28,10 +28,5 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
-  },
-  "engines": {
-    "node": "20.x",
-    "npm": "10.7.0",
-    "pnpm": "9.5.0"
   }
 }
