@@ -16,7 +16,7 @@ const authRouter = require('./routes/auth');
 
 const app = express();
 
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 app.use(cors({ origin: 'http://localhost:3001' }));
 
