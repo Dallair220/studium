@@ -33,20 +33,20 @@ const limiter = RateLimit({
 app.use(limiter);
 
 // Set up security headers
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
-      connectSrc: ["'self'", 'https://accounts.google.com'],
-      imgSrc: [
-        "'self'",
-        'https://ddragon.leagueoflegends.com',
-        'https://cdn-icons-png.flaticon.com',
-      ],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'"],
+//       scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+//       connectSrc: ["'self'", 'https://accounts.google.com'],
+//       imgSrc: [
+//         "'self'",
+//         'https://ddragon.leagueoflegends.com',
+//         'https://cdn-icons-png.flaticon.com',
+//       ],
+//     },
+//   })
+// );
 app.disable('x-powered-by');
 
 // Compress all routes
