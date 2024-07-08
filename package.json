@@ -9,7 +9,7 @@
   },
   "author": "Paul Hermann",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^8.2.2"
   }
 }
