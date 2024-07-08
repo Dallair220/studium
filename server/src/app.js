@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
@@ -21,9 +21,8 @@ app.set('trust proxy', 1);
 
 app.use(cors({ origin: 'http://localhost:3001' }));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(helmet());
-}
+// to use helmet with next.js, a hash or nonce must be used
+// app.use(helmet());
 
 // Set up rate limiter: maximum of 200 requests per minute
 const RateLimit = require('express-rate-limit');
