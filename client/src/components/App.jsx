@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import '../styles/App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Enter from './Enter';

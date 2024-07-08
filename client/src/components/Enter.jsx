@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../styles/Enter.css';
 
 export default function Enter({ createPlayer, updateAllPlayers }) {
   const [gameName, setGameName] = useState('');

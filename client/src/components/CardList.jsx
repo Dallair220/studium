@@ -1,4 +1,3 @@
-import '../styles/CardList.css';
 import { useState } from 'react';
 
 export default function CardList({ players, removePlayer }) {
