@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import Enter from './Enter';
 import CardList from './CardList';
 import Link from 'next/link';
@@ -222,7 +221,6 @@ function App() {
           View Github
         </a>
       </div>
-      <ToastContainer autoClose={2000} theme="dark" />
     </div>
   );
 }
