@@ -1,7 +1,12 @@
+import { Nunito } from 'next/font/google';
 import './global.css';
 
+const nunito = Nunito({
+  subsets: ['latin'],
+});
+
 export const metadata = {
-  title: 'League Ladder - Praxisprojekt',
+  title: 'League Ladder - Bachelorarbeit',
   description:
     'League Ladder is a web platform developed at TH Köln, enabling League of Legends players to track and compare their leaderboard positions.',
 };
@@ -9,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={nunito.className}>
         <div id="root">{children}</div>
       </body>
     </html>
