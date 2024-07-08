@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node src/bin/www",
+    "start": "npm install && node src/bin/www",
     "dev": "DEBUG=studium:* nodemon src/bin/www"
   },
   "dependencies": {

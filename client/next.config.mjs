@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
   distDir: './dist', // Changes the build output directory to `./dist/`.
   images: {
-    unoptimized: true, // Disable Image Optimization API
     remotePatterns: [
       {
         protocol: 'https',
