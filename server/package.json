@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=studium:* nodemon src/bin/www"
+    "start": "node src/bin/www",
+    "dev": "DEBUG=studium:* nodemon src/bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
