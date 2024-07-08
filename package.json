@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Das \"League Ladder\"-Projekt ist eine Webanwendung, die für das Praxisprojekt an der TH Köln entwickelt wurde. Es handelt sich um eine Plattform, die es Spielern von \"League of Legends\" ermöglicht, ihre Ranglistenpositionen zu verfolgen und zu vergleichen.",
   "scripts": {
-    "start": "npm run client:build && npm run server:start",
-    "client:build": "cd client && npm install && npm run build && cd ..",
-    "server:start": "cd server && npm install && npm run start"
+    "start": "npm run client & npm run server",
+    "client": "cd client && npm install && npm run build && npm run start",
+    "server": "cd server && npm install && npm run start"
   },
   "author": "Paul Hermann",
   "license": "ISC"
