@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Image from 'next/image';
+import deleteImgIcon from './deleteImgIcon.webp';
 
 export default function CardList({ players, removePlayer }) {
   return (
@@ -69,21 +71,27 @@ function Icon({ isHovered, iconId, removePlayer, playerId }) {
     <>
       {isHovered ? (
         <>
-          <img
+          <Image
             className="icon"
             src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
+            width={64}
+            height={64}
           />
-          <img
+          <Image
             className="deleteImg icon"
             draggable="false"
             onClick={() => removePlayer(playerId)}
-            src={'https://cdn-icons-png.flaticon.com/512/1828/1828665.png'}
+            src={deleteImgIcon}
+            width={64}
+            height={64}
           />
         </>
       ) : (
-        <img
+        <Image
           className="icon"
           src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
+          width={64}
+          height={64}
         />
       )}
     </>
