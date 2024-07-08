@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import Image from 'next/image';
+import Image from 'next/image';
 import deleteImgIcon from './deleteImgIcon.webp';
 
 export default function CardList({ players, removePlayer }) {
@@ -56,12 +56,12 @@ function Card({
         {gameName}
       </a>
       <div className="rank">{rankDisplay}</div>
-      {/* <Icon
+      <Icon
         isHovered={isHovered}
         iconId={profileIconId}
         removePlayer={removePlayer}
         playerId={playerId}
-      /> */}
+      />
     </div>
   );
 }
