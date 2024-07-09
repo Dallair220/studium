@@ -19,7 +19,7 @@ const app = express();
 // For Heroku deployment
 app.set('trust proxy', 1);
 
-app.use(cors({ origin: 'http://localhost:3001' }));
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 // to use helmet with next.js, a hash or nonce must be used
 // app.use(helmet());
