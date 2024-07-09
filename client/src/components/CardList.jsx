@@ -71,7 +71,7 @@ function Icon({ isHovered, iconId, removePlayer, playerId }) {
     <>
       <Image
         className="icon"
-        src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
+        src={`${process.env.NEXT_PUBLIC_API_URL}/profileIcons/${iconId}.webp`}
         alt="Player Icon"
         width={64}
         height={64}
