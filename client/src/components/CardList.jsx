@@ -69,31 +69,27 @@ function Card({
 function Icon({ isHovered, iconId, removePlayer, playerId }) {
   return (
     <>
-      {isHovered ? (
-        <>
-          <Image
-            className="icon"
-            src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
-            width={64}
-            height={64}
-          />
-          <Image
-            className="deleteImg icon"
-            draggable="false"
-            onClick={() => removePlayer(playerId)}
-            src={deleteImgIcon}
-            width={64}
-            height={64}
-          />
-        </>
-      ) : (
-        <Image
-          className="icon"
-          src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
-          width={64}
-          height={64}
-        />
-      )}
+      <Image
+        className="icon"
+        src={`https://ddragon.leagueoflegends.com/cdn/14.13.1/img/profileicon/${iconId}.png`}
+        alt="Player Icon"
+        width={64}
+        height={64}
+        style={{ width: 'auto' }}
+      />
+      <Image
+        className="deleteImg icon"
+        draggable="false"
+        onClick={() => removePlayer(playerId)}
+        src={deleteImgIcon}
+        alt="Delete Player"
+        width={64}
+        height={64}
+        style={{
+          display: isHovered ? 'block' : 'none', // Show image only when hovered
+          width: 'auto',
+        }}
+      />
     </>
   );
 }
